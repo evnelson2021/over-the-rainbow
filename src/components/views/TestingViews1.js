@@ -1,8 +1,16 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { UpdateProfileForm } from "../profile/ProfileEdit"
 
+export const TestingViews1 = () => {
 
-export const ApplicationViews = () => {
+    if (honeyUserObject.staff){
+		// return employee views
+		return <EmployeeViews />
+	}
+	else {
+		// return customer views
+		return <CustomerViews />
+	}
 	return <>
 		<Routes>
             <Route path="/" element={
@@ -22,4 +30,3 @@ export const ApplicationViews = () => {
         </Routes>
 	</>
 }
-

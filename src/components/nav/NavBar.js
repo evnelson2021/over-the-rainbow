@@ -13,7 +13,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/customers"></Link>
             </li>
             <li className="navbar__item navbar__logout">
-                <Link className="navbar__link" to="/profile">Profile</Link>
+                <Link className="navbar__link" to="/profile">Edit My Profile</Link>
             </li>
             {
                 localStorage.getItem("rainbow_user")

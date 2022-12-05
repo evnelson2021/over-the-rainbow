@@ -5,10 +5,12 @@ import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import "./Rainbow.css"
+import { Home } from "./home/Home"
 
 
 export const OverRainbow = () => {
 	return <Routes>
+		<Route path="/home" element={<Home />} />
 		<Route path="/login" element={<Login />} />
 		<Route path="/register" element={<Register />} />
 
