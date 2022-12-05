@@ -1,4 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { ActivityContainer } from "../Activities/ActivityContainer"
+// import { ActivityList } from "../Activities/ActivityList"
 import { UpdateProfileForm } from "../profile/ProfileEdit"
 
 
@@ -15,7 +17,7 @@ export const ApplicationViews = () => {
             }>
 
                 <Route path="profile" element={ <UpdateProfileForm /> } />
-                <Route path="tickets" element={ <></> } />
+                <Route path="activities" element={ <ActivityContainer /> } />
                 <Route path="employees" element={ <></> } />		
                 <Route path="employees/:employeeId" element={ <></> } />	
             </Route>

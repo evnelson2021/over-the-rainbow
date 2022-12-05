@@ -7,7 +7,7 @@ export const ActivitySearch = ({ setterFunction }) => {
                         setterFunction(changeEvent.target.value)
                     }
                 }    
-            type="text" placeholder="Enter serach terms" />
+            type="text" placeholder="Search Activities" />
             </div>
     )
 }

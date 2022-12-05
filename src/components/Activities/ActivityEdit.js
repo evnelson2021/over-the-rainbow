@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react"
 
-export const UpdateProfileForm = () => {
+export const ActivityEditForm = () => {
     // TODO: Provide initial state for profile
-const [profile, updateProfile] = useState({
-    fullName: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
-    userId: 0
+const [activity, updateActivity] = useState({
+    name: "",
+    location: "",
+    date: "",
+    time: "",
+    kidId: 0
 })
 const [feedback, setFeedback] = useState("")
 
 
-const localRainbowUser = localStorage.getItem("rainbow_user")
-    const rainbowUserObject = JSON.parse(localRainbowUser)
+// const localRainbowUser = localStorage.getItem("rainbow_user")
+//     const rainbowUserObject = JSON.parse(localRainbowUser)
 
-    // TODO: Get user profile info from API and update state
+    // TODO: Get activity info from API and update state
 useEffect(() => {
-    fetch(`http://localhost:8088/users?userId=${rainbowUserObject.id}`)
+    fetch(`http://localhost:8088/activities`)
     .then(response => response.json())
     .then((data) => {
-        const userObject = data[0]
-        updateProfile(userObject)
+        const activityObject = data[0]
+        updateActivity(activityObject)
     })
 }, [])
 
@@ -29,20 +29,20 @@ useEffect(() => {
         event.preventDefault()
 
         /*
-            TODO: Perform the PUT fetch() call here to update the profile.
+            TODO: Perform the PUT fetch() call here to update the activity.
             Navigate user to home page when done.
         */
 
-            fetch(`http://localhost:8088/users/${profile.id}`, {
+            fetch(`http://localhost:8088/users/${activity.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(profile)
+                body: JSON.stringify(activity)
             })
             .then(response => response.json())
             .then(() => {
-                setFeedback("Profile changes successfully saved")
+                setFeedback("Activity changes successfully saved")
             })
         }
 
@@ -60,8 +60,8 @@ useEffect(() => {
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <form className="profile">
-            <h2 className="profile__title">Update Profile Information</h2>
+        <form className="activity">
+            <h2 className="activity__title">Update Activity Information</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label>
@@ -69,13 +69,13 @@ useEffect(() => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        value={profile.fullName}
+                        value={activity.fullName}
                         onChange={
                             (evt) => {
                                 // TODO: Update name property
-                                const copy = {...profile}
+                                const copy = {...activity}
                                 copy.name = evt.target.value
-                                updateProfile(copy)
+                                updateActivity(copy)
                             }
                         } />
                 </div>
@@ -85,12 +85,12 @@ useEffect(() => {
                     <label htmlFor="address">Address:</label>
                     <input type="text"
                         className="form-control"
-                        value={profile.address}
+                        value={activity.address}
                         onChange={
                             (evt) => {
-                                const copy = {...profile}
+                                const copy = {...activity}
                                 copy.address = evt.target.value 
-                                updateProfile(copy)
+                                updateActivity(copy)
                             }
                         } />
                 </div>
@@ -100,12 +100,12 @@ useEffect(() => {
                     <label htmlFor="phoneNumber">Phone Number:</label>
                     <input type="text"
                         className="form-control"
-                        value={profile.phoneNumber}
+                        value={activity.phoneNumber}
                         onChange={
                             (evt) => {
-                                const copy = {...profile}
+                                const copy = {...activity}
                                 copy.phoneNumber = evt.target.value 
-                                updateProfile(copy)
+                                updateActivity(copy)
                             }
                         } />
                 </div>
@@ -115,12 +115,12 @@ useEffect(() => {
                     <label htmlFor="email">Email:</label>
                     <input type="text"
                         className="form-control"
-                        value={profile.email}
+                        value={activity.email}
                         onChange={
                             (evt) => {
-                                const copy = {...profile}
+                                const copy = {...activity}
                                 copy.email = evt.target.value 
-                                updateProfile(copy)
+                                updateActivity(copy)
                             }
                         } />
                 </div>
@@ -128,7 +128,7 @@ useEffect(() => {
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
-                Save Profile
+                Save Activity
             </button>
         </form>
         </>

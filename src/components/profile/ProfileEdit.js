@@ -60,7 +60,7 @@ useEffect(() => {
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <form className="profile">
+        <form className="profile-edit">
             <h2 className="profile__title">Update Profile Information</h2>
             <fieldset>
                 <div className="form-group">
