@@ -2,6 +2,8 @@ import { Outlet, Route, Routes } from "react-router-dom"
 import { ActivityContainer } from "../Activities/ActivityContainer"
 // import { ActivityList } from "../Activities/ActivityList"
 import { UpdateProfileForm } from "../profile/ProfileEdit"
+import { AddActivityForm } from "../Activities/AddActivityForm"
+import { ActivityEditForm } from "../Activities/ActivityEdit"
 
 
 export const ApplicationViews = () => {
@@ -18,6 +20,13 @@ export const ApplicationViews = () => {
 
                 <Route path="profile" element={ <UpdateProfileForm /> } />
                 <Route path="activities" element={ <ActivityContainer /> } />
+                <Route path="/edit-activities" element={ <ActivityEditForm /> } />
+                <Route path="/add-activities" element={ <AddActivityForm /> } />
+                <Route path="schedule" element={ <></> } />
+                <Route path="/edit-schedule" element={ <ActivityEditForm /> } />
+                <Route path="/add-schedule" element={ <AddActivityForm /> } />
+
+                
                 <Route path="employees" element={ <></> } />		
                 <Route path="employees/:employeeId" element={ <></> } />	
             </Route>

@@ -13,10 +13,16 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/edit-activities">Edit Activities</Link>
             </li>
             <li className="navbar__item active">
+                <Link className="navbar__link" to="/add-activities">Add Activities</Link>
+            </li>
+            <li className="navbar__item active">
                 <Link className="navbar__link" to="/schedule">Parenting Schedule</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/edit-schedule">Edit Schedule</Link>
+            </li>
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/add-schedule">Add Scheduled Time</Link>
             </li>
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="/profile">Edit My Profile</Link>
@@ -32,15 +38,6 @@ export const NavBar = () => {
                     : ""
             }
         </ul>
-
-        // <ul className="navbar">
-        //     <li className="navbar__item navbar__logout">
-        //         <Link className="navbar__link" to="" onClick={() => {
-        //             localStorage.removeItem("rainbow_user")
-        //             navigate("/", {replace: true})
-        //         }}>Logout</Link>
-        //     </li>
-        // </ul>
     )
 }
 

@@ -1,7 +1,22 @@
 import { useState, useEffect } from "react"
+import "./Activities.css"
 
-export const ActivityList = () => {
+// export const ActivityList = ( {searchTermState} ) => {
+
+export const ActivityList = ( ) => {
     const [activities, setActivities] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
+    // const [filteredActivities, setFiltered] = useState([])
+
+    // useEffect(
+    //     () => {
+    //         const searchedActivities = activities.filter(activity => {
+    //             return activity.description.toLowerCase().startsWith(searchTermState.toLowerCase())
+    //         })
+    //         setFiltered(searchedActivities)
+    //     },
+    //     [ searchTermState ]
+    // )
+
 
   // Use Effect watches for state change
   // It takes two arguments, a function and an array
@@ -18,25 +33,34 @@ export const ActivityList = () => {
   return (
     <>
     <div className="activities-container">
+        
       {activities.map((activityObj) => {
         if (activityObj.kidId === 1)
         return (
           <div className="activity-card" key={activityObj.id}>
             <h2>{activityObj.kid.name}</h2>
-            <div className="activity-name">{activityObj.name}</div>
+            <div className="kid1-activities">
+                <h3 className="activity-name">{activityObj.name}</h3>
+                <p className="activity-details">Location: {activityObj.location}</p>
+                <p className="activity-details"> Date/Day of Week: {activityObj.date}</p>
+                <p className="activity-details">Time: {activityObj.time}</p>
+                </div>
           </div>
         )
       })}
-    </div>
-
     
-    <div className="activities-container">
+    
       {activities.map((activityObj) => {
         if (activityObj.kidId === 2)
         return (
           <div className="activity-card" key={activityObj.id}>
             <h2>{activityObj.kid.name}</h2>
-            <div className="activity-name">{activityObj.name}</div>
+            <div className="kid2-activities">
+                <h3 className="activity-name">{activityObj.name}</h3>
+                <p className="activity-details">Location: {activityObj.location}</p>
+                <p className="activity-details"> Date/Day of Week: {activityObj.date}</p>
+                <p className="activity-details">Time: {activityObj.time}</p>
+                </div>
           </div>
         )
       })}
@@ -49,15 +73,7 @@ export const ActivityList = () => {
 //     const [activities, setActivities] = useState ([])
 // }
 
-// useEffect(
-//     () => {
-//         const searchedActivities = activities.filter(activity => {
-//             return activity.description.toLowerCase().startsWith(searchTermState.toLowerCase())
-//         })
-//         setFiltered(searchedActivities)
-//     },
-//     [ searchTermState ]
-// )
+
 
 // const getAllActivities = () => {
 //     fetch(`http://localhost:8088/activities`)
