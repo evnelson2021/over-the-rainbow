@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 
 export const ActivityEditForm = () => {
     // TODO: Provide initial state for profile
@@ -6,11 +8,13 @@ const [activity, updateActivity] = useState({
     name: "",
     location: "",
     date: "",
-    time: "",
+    startTime: "",
+    endTime: "",
     kidId: 0
 })
 const [feedback, setFeedback] = useState("")
 
+const navigate = useNavigate()
 
 // const localRainbowUser = localStorage.getItem("rainbow_user")
 //     const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -33,7 +37,7 @@ useEffect(() => {
             Navigate user to home page when done.
         */
 
-            fetch(`http://localhost:8088/users/${activity.id}`, {
+            fetch(`http://localhost:8088/activities/${activity.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -50,7 +54,10 @@ useEffect(() => {
         useEffect(() => {
             if (feedback !== "") {
                 // Clear feedback to make entire element disappear after 3 seconds
-                setTimeout(() => setFeedback(""), 3000);
+                setTimeout(() => setFeedback(""), 3000)
+                .then(() => {
+                    navigate("/activities")
+                })
             }
         }, [feedback])
 

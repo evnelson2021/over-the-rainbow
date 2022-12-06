@@ -4,6 +4,8 @@ import { ActivityContainer } from "../Activities/ActivityContainer"
 import { UpdateProfileForm } from "../profile/ProfileEdit"
 import { AddActivityForm } from "../Activities/AddActivityForm"
 import { ActivityEditForm } from "../Activities/ActivityEdit"
+import { Login } from "../auth/Login"
+
 
 
 export const ApplicationViews = () => {
@@ -11,13 +13,12 @@ export const ApplicationViews = () => {
 		<Routes>
             <Route path="/" element={
                 <>
-                    <h1>Somewhere Over the Rainbow</h1>
+                    <h1>Over the Rainbow</h1>
                     <div>Keeping your co-parenting skies blue since 2022.</div>
 
                     <Outlet />
                 </>
             }>
-
                 <Route path="profile" element={ <UpdateProfileForm /> } />
                 <Route path="activities" element={ <ActivityContainer /> } />
                 <Route path="/edit-activities" element={ <ActivityEditForm /> } />

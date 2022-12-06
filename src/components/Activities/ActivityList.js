@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import "./Activities.css"
 
+
 // export const ActivityList = ( {searchTermState} ) => {
 
 export const ActivityList = ( ) => {
@@ -30,36 +31,48 @@ export const ActivityList = ( ) => {
       })
   }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
 
+      // "date": "2022-12-06"
+    
+      const formatDate = (activity) => {
+        let formattedDate = activity.date.split("-")
+        formattedDate = [formattedDate[1],formattedDate[2],formattedDate[0]]
+        return(formattedDate.join("/"))
+    }
+// compare array index [0] year, assign to older or newer, 
   return (
+    
     <>
+    
     <div className="activities-container">
-        
+    <h2>Maverick</h2>
       {activities.map((activityObj) => {
+              
         if (activityObj.kidId === 1)
         return (
           <div className="activity-card" key={activityObj.id}>
-            <h2>{activityObj.kid.name}</h2>
             <div className="kid1-activities">
                 <h3 className="activity-name">{activityObj.name}</h3>
                 <p className="activity-details">Location: {activityObj.location}</p>
-                <p className="activity-details"> Date/Day of Week: {activityObj.date}</p>
-                <p className="activity-details">Time: {activityObj.time}</p>
+                <p className="activity-details"> Date/Day of Week: {formatDate(activityObj)}</p>
+                <p className="activity-details">Time: {activityObj.startTime}</p>
+                <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
           </div>
         )
       })}
     
-    
+    <h2>Adaline</h2>
       {activities.map((activityObj) => {
         if (activityObj.kidId === 2)
         return (
           <div className="activity-card" key={activityObj.id}>
-            <h2>{activityObj.kid.name}</h2>
+
             <div className="kid2-activities">
                 <h3 className="activity-name">{activityObj.name}</h3>
                 <p className="activity-details">Location: {activityObj.location}</p>
-                <p className="activity-details"> Date/Day of Week: {activityObj.date}</p>
-                <p className="activity-details">Time: {activityObj.time}</p>
+                <p className="activity-details"> Date/Day of Week: {formatDate(activityObj)}</p>
+                <p className="activity-details">Time: {activityObj.startTime}</p>
+                <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
           </div>
         )
