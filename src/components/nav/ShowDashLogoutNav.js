@@ -1,13 +1,13 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
-export const DashNav = () => {
+export const ShowDashLogoutNav = () => {
     const navigate = useNavigate()
 
     return (
         <ul className="navbar">
             <li className="navbar__item navbar__logout">
-                <Link className="navbar__link" to="/edit-profile">Edit My Profile</Link>
+                <Link className="navbar__link" to="/dash">Dashboard</Link>
             </li>
             {
                 localStorage.getItem("rainbow_user")

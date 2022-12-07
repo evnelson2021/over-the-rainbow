@@ -49,7 +49,7 @@ export const ActivityList = ( ) => {
     <div className="activities-container">
     {/* <h2>Maverick</h2> */}
       {activities.map((activityObj) => {
-              
+              // Can I write a for loop here for activities after declaring html="<h2>Maverick</h2> and use html+= for the rest? Then return html?"
         if (activityObj.kidId === 1)
         return (
           <div className="activity-card" key={activityObj.id}>

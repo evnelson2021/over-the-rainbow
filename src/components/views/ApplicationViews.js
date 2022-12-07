@@ -5,6 +5,7 @@ import { UpdateProfileForm } from "../profile/ProfileEdit"
 import { AddActivityForm } from "../Activities/AddActivityForm"
 import { ActivityEditForm } from "../Activities/ActivityEdit"
 import { Login } from "../auth/Login"
+import { AddScheduleForm } from "../Schedules/AddScheduleForm"
 
 
 
@@ -19,14 +20,15 @@ export const ApplicationViews = () => {
                     <Outlet />
                 </>
             }>
-                <Route path="dash/edit-profile" element={ <UpdateProfileForm /> } />
+                <Route path="login" element={ <Login /> } />
+                <Route path="edit-profile" element={ <UpdateProfileForm /> } />
                 <Route path="dash" element={ <></> } />
                 <Route path="activities" element={ <ActivityContainer /> } />
                 <Route path="activities/edit-activity" element={ <ActivityEditForm /> } />
                 <Route path="activities/add-activity" element={ <AddActivityForm /> } />
                 <Route path="schedule" element={ <></> } />
                 <Route path="schedule/edit-schedule" element={ <ActivityEditForm /> } />
-                <Route path="schedule/add-schedule" element={ <AddActivityForm /> } />
+                <Route path="schedule/add-schedule" element={ <AddScheduleForm /> } />
 
             
                 {/* <Route path="employees/:employeeId" element={ <></> } />	 */}

@@ -28,7 +28,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/dash">Dashboard</Link>
             </li>
             <li className="navbar__item navbar__logout">
-                <Link className="navbar__link" to="dash/edit-profile">Edit My Profile</Link>
+                <Link className="navbar__link" to="edit-profile">Edit My Profile</Link>
             </li>
             {
                 localStorage.getItem("rainbow_user")
