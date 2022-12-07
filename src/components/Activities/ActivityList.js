@@ -42,9 +42,12 @@ export const ActivityList = ( ) => {
   return (
     
     <>
-    
+    <div className="kid-name">
+        <h2>Maverick</h2>
+        <h2>Adaline</h2>
+    </div>
     <div className="activities-container">
-    <h2>Maverick</h2>
+    {/* <h2>Maverick</h2> */}
       {activities.map((activityObj) => {
               
         if (activityObj.kidId === 1)
@@ -61,7 +64,7 @@ export const ActivityList = ( ) => {
         )
       })}
     
-    <h2>Adaline</h2>
+    {/* <h2>Adaline</h2> */}
       {activities.map((activityObj) => {
         if (activityObj.kidId === 2)
         return (

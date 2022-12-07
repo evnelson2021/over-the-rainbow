@@ -15,22 +15,23 @@ export const ApplicationViews = () => {
                 <>
                     <h1>Over the Rainbow</h1>
                     <div>Keeping your co-parenting skies blue since 2022.</div>
-
+                    {/* try navbar here */}
                     <Outlet />
                 </>
             }>
-                <Route path="profile" element={ <UpdateProfileForm /> } />
+                <Route path="dash/edit-profile" element={ <UpdateProfileForm /> } />
+                <Route path="dash" element={ <></> } />
                 <Route path="activities" element={ <ActivityContainer /> } />
-                <Route path="/edit-activities" element={ <ActivityEditForm /> } />
-                <Route path="/add-activities" element={ <AddActivityForm /> } />
+                <Route path="activities/edit-activity" element={ <ActivityEditForm /> } />
+                <Route path="activities/add-activity" element={ <AddActivityForm /> } />
                 <Route path="schedule" element={ <></> } />
-                <Route path="/edit-schedule" element={ <ActivityEditForm /> } />
-                <Route path="/add-schedule" element={ <AddActivityForm /> } />
+                <Route path="schedule/edit-schedule" element={ <ActivityEditForm /> } />
+                <Route path="schedule/add-schedule" element={ <AddActivityForm /> } />
 
-                
-                <Route path="employees" element={ <></> } />		
-                <Route path="employees/:employeeId" element={ <></> } />	
+            
+                {/* <Route path="employees/:employeeId" element={ <></> } />	 */}
             </Route>
+            {/* try another route here and navbar 2 with associated routes/paths */}
         </Routes>
 	</>
 }

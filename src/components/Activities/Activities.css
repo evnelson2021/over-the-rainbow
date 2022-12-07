@@ -7,12 +7,23 @@
     
 }
 
-.kid1-activities{
+.kid-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.activity-card{
     border: 2px solid black;
     padding: 10px;
 }
 
+.kid1-activities{
+    color:blue;
+}
+
 .kid2-activities{
-    border: 2px solid black;
-    padding: 10px;
+    color:purple;
 }

@@ -10,22 +10,25 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/activities">Activities</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/edit-activities">Edit Activities</Link>
+                <Link className="navbar__link" to="activities/edit-activity">Edit Activities</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/add-activities">Add Activities</Link>
+                <Link className="navbar__link" to="activities/add-activity">Add Activities</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/schedule">Parenting Schedule</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/edit-schedule">Edit Schedule</Link>
+                <Link className="navbar__link" to="schedule/edit-schedule">Edit Schedule</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/add-schedule">Add Scheduled Time</Link>
+                <Link className="navbar__link" to="schedule/add-schedule">Add Scheduled Time</Link>
             </li>
             <li className="navbar__item navbar__logout">
-                <Link className="navbar__link" to="/profile">Edit My Profile</Link>
+                <Link className="navbar__link" to="/dash">Dashboard</Link>
+            </li>
+            <li className="navbar__item navbar__logout">
+                <Link className="navbar__link" to="dash/edit-profile">Edit My Profile</Link>
             </li>
             {
                 localStorage.getItem("rainbow_user")

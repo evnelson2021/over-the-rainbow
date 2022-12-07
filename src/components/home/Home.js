@@ -13,7 +13,6 @@ export const Home = () => {
                 </>
             }>
 
-                <Route path="/login" element={ <Login /> } />
 
             </Route>
         </Routes>
