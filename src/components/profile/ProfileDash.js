@@ -8,7 +8,7 @@ export const Dashboard = () => {
                 <Link className="navbar__link" to="/activities">Activities</Link>
             </li>
             <li className="dash__item active">
-                <Link className="navbar__link" to="/schedole">Parenting Schedule</Link>
+                <Link className="navbar__link" to="/schedule">Parenting Schedule</Link>
             </li>
         </ol>
 )

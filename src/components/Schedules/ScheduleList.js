@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
-import "./Activities.css"
+// import "./Schedule.css"
 
-
-// export const ActivityList = ( {searchTermState} ) => {
 
 export const ScheduleList = ( ) => {
-    const [parentingTime, setParentingTime] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
+    const [schedule, setSchedule] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
 
 
   // Use Effect watches for state change
@@ -13,10 +11,10 @@ export const ScheduleList = ( ) => {
   // The array is which states we want to observe
   // The function is what we want to do when that observed state changes
   useEffect(() => {
-    fetch(`http://localhost:8088/parentingTime?_expand=kid`)
+    fetch(`http://localhost:8088/schedule?_expand=user`)
       .then((res) => res.json())
-      .then((activitiesArray) => {
-        setParentingTime(activitiesArray)
+      .then((scheduleArray) => {
+        setSchedule(scheduleArray)
       })
   }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
 
@@ -30,9 +28,9 @@ export const ScheduleList = ( ) => {
 // compare array index [0] year, assign to older or newer, 
   return (
     <>
-    <div className="activities-container">
+    <div className="schedule-container">
     
-      {activities.map((scheduleObj) => {
+      {schedule.map((scheduleObj) => {
         return (
           <div className="schedule-card" key={scheduleObj.id}>
 

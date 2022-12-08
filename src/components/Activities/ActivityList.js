@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Navigate, useNavigate } from "react-router-dom"
 import "./Activities.css"
 
 
@@ -7,6 +8,10 @@ import "./Activities.css"
 export const ActivityList = ( ) => {
     const [activities, setActivities] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
     // const [filteredActivities, setFiltered] = useState([])
+    // const navigateToAddActivity = () => {
+    //   Navigate("/activities/add-activity")
+    // }
+    const navigate = useNavigate()
 
     // useEffect(
     //     () => {
@@ -42,10 +47,15 @@ export const ActivityList = ( ) => {
   return (
     
     <>
+
+    <button className="add_button" onClick={() => navigate("/activities/add-activity")}>New Activity</button>
+      
+
     <div className="kid-name">
         <h2>Maverick</h2>
         <h2>Adaline</h2>
     </div>
+
     <div className="activities-container">
     {/* <h2>Maverick</h2> */}
       {activities.map((activityObj) => {
@@ -60,6 +70,8 @@ export const ActivityList = ( ) => {
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
+                <button className="add_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
+                {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER */}
           </div>
         )
       })}
@@ -77,6 +89,8 @@ export const ActivityList = ( ) => {
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
+                <button className="add_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
+                {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER*/}
           </div>
         )
       })}

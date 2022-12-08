@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import "./Schedule.css"
 
 
 export const AddScheduleForm = () => {
@@ -8,56 +9,42 @@ export const AddScheduleForm = () => {
         initial state object
     */
     const [schedule, addSchedule] = useState({
-        name: "",
-        location: "",
-        date: "",
-        startTime: "",
-        endTime: "",
-        kidId: 0
+        startDate: "",
+        endDate: "",
+        time: "",
+        notes: "",
+        userId: 0
     })
-
-    // const [kids, setKids] = useState([])
-    /*
-        TODO: Use the useNavigation() hook so you can redirect
-        the user to the schedule list
-    */
 
     const navigate = useNavigate()
 
     // useEffect(() => {
-    //     fetch(`http://localhost:8088/schedules?_expand=kid`)
+    //     fetch(`http://localhost:8088/schedules?_expand=user`)
     //       .then((res) => res.json())
     //       .then((schedulesArray) => {
     //         setSchedules(schedulesArray)
     //       })
     //   }, [])
 
-    // const now = new Date();
-    // const dateString = now.toLocaleDateString({
-    //     weekday: "short",
-    //     year: "numeric",
-    //     month: "2-digit",
-    //     day: "numeric"
-    //     })
 
-    // const localRainbowUser = localStorage.getItem("rainbow_user")
-    // const rainbowUserObject = JSON.parse(localRainbowUser)
+    const localRainbowUser = localStorage.getItem("rainbow_user")
+    const rainbowUserObject = JSON.parse(localRainbowUser)
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
         // TODO: Create the object to be saved to the API
         const scheduleToSendToAPI = {
-            name: schedule.name,
-            location: schedule.location,
-            date: schedule.date,
+            startDate: schedule.startDate,
+            endDate: schedule.endDate,
             startTime: schedule.startTime,
             endTime: schedule.endTime,
-            kidId: schedule.kidId
+            notes: schedule.notes,
+            userId: rainbowUserObject.id
         } 
 
         // TODO: Perform the fetch() to POST the object to the API
-        return fetch(`http://localhost:8088/schedules?_expand=kid`, {
+        return fetch(`http://localhost:8088/schedules?_expand=user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -72,52 +59,16 @@ export const AddScheduleForm = () => {
 
     return (
         <form className="scheduleForm">
-            <h2 className="scheduleForm__title">New Schedule</h2>
+            <h2 className="scheduleForm__title">New Schedule Change</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Schedule Name:</label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="Name of Schedule"
-                        value={schedule.name}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...schedule}
-                                copy.name = evt.target.value
-                                addSchedule(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="location">Schedule Location:</label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        placeholder="Location of Schedule"
-                        value={schedule.location}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...schedule}
-                                copy.location = evt.target.value
-                                addSchedule(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="date">Schedule Date:</label>
+                    <label htmlFor="date">Start Date:</label>
                     <input
                         required autoFocus
                         type="date"
                         className="form-control"
                         placeholder="Date of Schedule"
-                        value={schedule.date} 
+                        value={schedule.startDate} 
                         onChange={
                             (evt)=> {
                                 const copy = {...schedule}
@@ -131,7 +82,25 @@ export const AddScheduleForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="start-time">Schedule Start Time:</label>
+                    <label htmlFor="date">End Date:</label>
+                    <input
+                        required autoFocus
+                        type="date"
+                        className="form-control"
+                        placeholder="Date of Schedule"
+                        value={schedule.endDate} 
+                        onChange={
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.date = evt.target.value
+                                addSchedule(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="start-time">Start Time:</label>
                     <input
                         required autoFocus
                         type="time"
@@ -147,7 +116,7 @@ export const AddScheduleForm = () => {
                         } />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="end-time">Schedule End Time:</label>
+                    <label htmlFor="end-time">End Time:</label>
                     <input
                         required autoFocus
                         type="time"
@@ -158,6 +127,24 @@ export const AddScheduleForm = () => {
                             (evt)=> {
                                 const copy = {...schedule}
                                 copy.endTime = evt.target.value
+                                addSchedule(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="notes">Schedule Notes:</label>
+                    <input className="notes-box"
+                        required autoFocus
+                        type="text"
+                        classNotes="form-control"
+                        placeholder="Explanation of schedule change or travel"
+                        value={schedule.notes}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.notes = evt.target.value
                                 addSchedule(copy)
                             }
                         } />
@@ -188,34 +175,10 @@ export const AddScheduleForm = () => {
                 return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
                 </select> */}
 
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="name">Maverick:</label>
-                    <input type="checkbox"
-                        value={schedule.kidId === 1}
-                        onChange={
-                            (evt) => {
-                                const copy = {...schedule}
-                                copy.kidId = evt.target.checked
-                                addSchedule(copy)
-                            }
-                        } />
-                        <label htmlFor="name">Adaline:</label>
-                        <input type="checkbox"
-                        value={schedule.kidId === 2}
-                        onChange={
-                            (evt) => {
-                                const copy = {...schedule}
-                                copy.kidId = evt.target.checked
-                                addSchedule(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
             <button 
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
             className="btn btn-primary">
-                Submit Schedule
+                Submit Schedule Change
             </button>
         </form>
     )

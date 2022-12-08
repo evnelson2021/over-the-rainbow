@@ -9,7 +9,6 @@ import { HomeNav } from "./nav/HomeNav"
 import { Login } from "./auth/Login"
 import { LoginNav } from "./nav/LoginNav"
 import { ActivityEditForm } from "./Activities/ActivityEdit"
-import { ActivityEditNav } from "./nav/ActivityEditNav"
 
 import { DashNav } from "./nav/DashNav"
 import { ShowDashLogoutNav } from "./nav/ShowDashLogoutNav"
@@ -18,6 +17,10 @@ import { Dashboard } from "./profile/ProfileDash"
 import { AddActivityForm } from "./Activities/AddActivityForm"
 import { AddScheduleForm } from "./Schedules/AddScheduleForm"
 import { ActivityContainer } from "./Activities/ActivityContainer"
+import { ScheduleEditForm } from "./Schedules/ScheduleEdit"
+import { ShowSchedListLogoutNav } from "./nav/ShowSchedListLogoutNav"
+import { ShowActListLogoutNav } from "./nav/ShowActListLogoutNav"
+import { ScheduleList } from "./Schedules/ScheduleList"
 
 
 export const OverRainbow = () => {
@@ -87,10 +90,20 @@ export const OverRainbow = () => {
 			
 		} />
 
-		<Route path="/activities/add-activity" element={
+<Route path="/schedule" element={
 			<Authorized>
 			<>
 				<ShowDashLogoutNav />
+				<ScheduleList />
+			</>
+		</Authorized>
+			
+		} />
+
+		<Route path="/activities/add-activity" element={
+			<Authorized>
+			<>
+			<ShowActListLogoutNav />
 				<AddActivityForm />
 			</>
 		</Authorized>
@@ -100,34 +113,34 @@ export const OverRainbow = () => {
 		<Route path="/schedule/add-schedule" element={
 			<Authorized>
 			<>
-				<ShowDashLogoutNav />
+			<ShowSchedListLogoutNav />
 				<AddScheduleForm />
 			</>
 		</Authorized>
 			
 		} />
-{/* 
+
 		<Route path="/activities/edit-activity" element={
 			<Authorized>
 			<>
-				<ActivityEditNav />
+				<ShowActListLogoutNav />
 				<ActivityEditForm />
 			</>
 		</Authorized>
 			
 		} />
 
-<Route path="/activities/edit-activity" element={
+<Route path="/schedule/edit-schedule" element={
 			<Authorized>
 			<>
-				<ActivityEditNav />
-				<ActivityEditForm />
+				<ShowSchedListLogoutNav />
+				<ScheduleEditForm />
 			</>
 		</Authorized>
 			
 		} />
 
-		<Route path="/activities/edit-activity" element={
+		{/* <Route path="/activities/edit-activity" element={
 			<Authorized>
 			<>
 				<ActivityEditNav />

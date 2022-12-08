@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const UpdateProfileForm = () => {
+export const ScheduleEditForm = () => {
     // TODO: Provide initial state for profile
 const [profile, updateProfile] = useState({
     fullName: "",
