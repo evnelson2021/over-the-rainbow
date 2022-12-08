@@ -43,13 +43,22 @@ export const ActivityList = ( ) => {
         formattedDate = [formattedDate[1],formattedDate[2],formattedDate[0]]
         return(formattedDate.join("/"))
     }
+
+//     const parseInt(time) = date.getTime("the date")
+// if(time>12){
+// time -= 12
+// return time
+// }else{
+// return time
+// }
+
 // compare array index [0] year, assign to older or newer, 
   return (
     
     <>
 
     <button className="add_button" onClick={() => navigate("/activities/add-activity")}>New Activity</button>
-      
+    <h1 className="activities-title">Activities</h1>
 
     <div className="kid-name">
         <h2>Maverick</h2>
@@ -64,14 +73,16 @@ export const ActivityList = ( ) => {
         return (
           <div className="activity-card" key={activityObj.id}>
             <div className="kid1-activities">
+            <div className="each-activity">
                 <h3 className="activity-name">{activityObj.name}</h3>
                 <p className="activity-details">Location: {activityObj.location}</p>
-                <p className="activity-details"> Date/Day of Week: {formatDate(activityObj)}</p>
+                <p className="activity-details"> Date: {formatDate(activityObj)}</p>
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
-                <button className="add_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
+                <button className="edit_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
                 {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER */}
+            </div>
           </div>
         )
       })}
@@ -83,14 +94,16 @@ export const ActivityList = ( ) => {
           <div className="activity-card" key={activityObj.id}>
 
             <div className="kid2-activities">
+            <div className="each-activity">
                 <h3 className="activity-name">{activityObj.name}</h3>
                 <p className="activity-details">Location: {activityObj.location}</p>
-                <p className="activity-details"> Date/Day of Week: {formatDate(activityObj)}</p>
+                <p className="activity-details"> Date: {formatDate(activityObj)}</p>
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
-                <button className="add_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
+                <button className="edit_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
                 {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER*/}
+            </div>
           </div>
         )
       })}

@@ -6,13 +6,15 @@ import { AddActivityForm } from "../Activities/AddActivityForm"
 import { ActivityEditForm } from "../Activities/ActivityEdit"
 import { Login } from "../auth/Login"
 import { AddScheduleForm } from "../Schedules/AddScheduleForm"
+import { Home } from "../home/Home"
+import { ScheduleEditForm } from "../Schedules/ScheduleEdit"
 
 
 
 export const ApplicationViews = () => {
 	return <>
 		<Routes>
-            <Route path="/" element={
+            <Route path="*" element={
                 <>
                     <h1>Over the Rainbow</h1>
                     <div>Keeping your co-parenting skies blue since 2022.</div>
@@ -20,6 +22,7 @@ export const ApplicationViews = () => {
                     <Outlet />
                 </>
             }>
+                <Route path="*" element={ <Home /> } />
                 <Route path="login" element={ <Login /> } />
                 <Route path="edit-profile" element={ <UpdateProfileForm /> } />
                 <Route path="dash" element={ <></> } />
@@ -27,7 +30,7 @@ export const ApplicationViews = () => {
                 <Route path="activities/edit-activity" element={ <ActivityEditForm /> } />
                 <Route path="activities/add-activity" element={ <AddActivityForm /> } />
                 <Route path="schedule" element={ <></> } />
-                <Route path="schedule/edit-schedule" element={ <ActivityEditForm /> } />
+                <Route path="/:scheduleId/edit-schedule" element={ <ScheduleEditForm /> } />
                 <Route path="schedule/add-schedule" element={ <AddScheduleForm /> } />
 
             

@@ -14,7 +14,7 @@ export const ShowSchedListLogoutNav = () => {
                     ? <li className="navbar__item navbar__logout">
                         <Link className="navbar__link" to="" onClick={() => {
                             localStorage.removeItem("rainbow_user")
-                            navigate("/", {replace: true})
+                            navigate("*", {replace: true})
                         }}>Logout</Link>
                     </li>
                     : ""

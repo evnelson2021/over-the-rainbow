@@ -16,6 +16,8 @@ export const AddActivityForm = () => {
         kidId: 0
     })
 
+    const [feedback, setFeedback] = useState("")
+
     // const [kids, setKids] = useState([])
     /*
         TODO: Use the useNavigation() hook so you can redirect
@@ -66,7 +68,10 @@ export const AddActivityForm = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("/activities")
+                setFeedback(("Activity changes successfully saved"), 3000)
+            })
+            .then(() => {
+                navigate(("/activities"), 3000)
             })
     }
 
@@ -192,21 +197,21 @@ export const AddActivityForm = () => {
                 <div className="form-group">
                     <label htmlFor="name">Maverick:</label>
                     <input type="checkbox"
-                        value={activity.kidId === 1}
+                        value="1"
                         onChange={
                             (evt) => {
                                 const copy = {...activity}
-                                copy.kidId = evt.target.checked
+                                copy.kidId = parseInt(evt.target.value)
                                 addActivity(copy)
                             }
                         } />
-                        <label htmlFor="name">Adaline:</label>
-                        <input type="checkbox"
-                        value={activity.kidId === 2}
+                    <label htmlFor="name">Adaline:</label>
+                    <input type="checkbox"
+                        value= "2"
                         onChange={
                             (evt) => {
                                 const copy = {...activity}
-                                copy.kidId = evt.target.checked
+                                copy.kidId = parseInt(evt.target.value)
                                 addActivity(copy)
                             }
                         } />

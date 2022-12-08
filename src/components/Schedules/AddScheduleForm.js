@@ -11,7 +11,8 @@ export const AddScheduleForm = () => {
     const [schedule, addSchedule] = useState({
         startDate: "",
         endDate: "",
-        time: "",
+        startTime: "",
+        endTime: "",
         notes: "",
         userId: 0
     })
@@ -44,7 +45,15 @@ export const AddScheduleForm = () => {
         } 
 
         // TODO: Perform the fetch() to POST the object to the API
-        return fetch(`http://localhost:8088/schedules?_expand=user`, {
+        if (
+            schedule.startDate &&
+            schedule.endDate &&
+            schedule.startTime &&
+            schedule.endTime &&
+            schedule.notes &&
+            schedule.userId
+          ) {
+            fetch(`http://localhost:8088/schedules?_expand=user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -53,8 +62,11 @@ export const AddScheduleForm = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("/schedules")
+                navigate("/schedule")
             })
+        } else {
+                alert('Please complete the form')
+              }
     }
 
     return (
@@ -182,4 +194,4 @@ export const AddScheduleForm = () => {
             </button>
         </form>
     )
-}
+} 

@@ -1,51 +1,60 @@
 import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 
 export const ScheduleEditForm = () => {
-    // TODO: Provide initial state for profile
-const [profile, updateProfile] = useState({
-    fullName: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
-    userId: 0
+    // TODO: Provide initial state for schedule
+const [schedule, updateSchedule] = useState({
+        startDate: "",
+        endDate: "",
+        startTime: "",
+        endTime: "",
+        notes: "",
+        userId: 0
 })
 const [feedback, setFeedback] = useState("")
+const navigate = useNavigate()
+const {scheduleId} = useParams
 
 
-const localRainbowUser = localStorage.getItem("rainbow_user")
-    const rainbowUserObject = JSON.parse(localRainbowUser)
+// const localRainbowUser = localStorage.getItem("rainbow_user")
+//     const rainbowUserObject = JSON.parse(localRainbowUser)
 
-    // TODO: Get user profile info from API and update state
+    // TODO: Get user schedule info from API and update state
 useEffect(() => {
-    fetch(`http://localhost:8088/users?userId=${rainbowUserObject.id}`)
+    fetch(`http://localhost:8088/schedules?=${scheduleId}`)
     .then(response => response.json())
     .then((data) => {
-        const userObject = data[0]
-        updateProfile(userObject)
+        const scheduleObject = data[{scheduleId}]
+        // WHAT DO I PUT HERE TO ACCESS CORRECT RECORD?????
+        updateSchedule(scheduleObject)
     })
 }, [])
+
+
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
         /*
-            TODO: Perform the PUT fetch() call here to update the profile.
+            TODO: Perform the PUT fetch() call here to update the schedule.
             Navigate user to home page when done.
         */
 
-            fetch(`http://localhost:8088/users/${profile.id}`, {
+            fetch(`http://localhost:8088/schedule/${schedule.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(profile)
+                body: JSON.stringify(schedule)
             })
             .then(response => response.json())
             .then(() => {
-                setFeedback("Profile changes successfully saved")
+                setFeedback("Schedule changes successfully saved")
             })
-        }
-
+            .then(() => {
+                    setTimeout(() => navigate("/schedule"), 4000);
+        })
+    }
         
         useEffect(() => {
             if (feedback !== "") {
@@ -54,73 +63,101 @@ useEffect(() => {
             }
         }, [feedback])
 
+        // USE THIS TO NAVIGATE BACK TO PAGE ON TIMER AFTER SAVE
+        // .then(() => {
+        //     setTimeout(() => navigate("/schedule"), 4000);
 
     return (
         <>
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <form className="profile">
-            <h2 className="profile__title">Update Profile Information</h2>
+        <form className="schedule">
+            <h2 className="schedule__title">Update Schedule Information</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="date">Start Date:</label>
                     <input
                         required autoFocus
+                        type="date"
+                        className="form-control"
+                        placeholder="Date of Schedule"
+                        value={schedule.startDate} 
+                        onChange={
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.date = evt.target.value
+                                updateSchedule(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="date">End Date:</label>
+                    <input
+                        required autoFocus
+                        type="date"
+                        className="form-control"
+                        placeholder="Date of Schedule"
+                        value={schedule.endDate} 
+                        onChange={
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.date = evt.target.value
+                                updateSchedule(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="start-time">Start Time:</label>
+                    <input
+                        required autoFocus
+                        type="time"
+                        className="form-control"
+                        placeholder="Start Time"
+                        value={schedule.startTime}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.startTime = evt.target.value
+                                updateSchedule(copy)
+                            }
+                        } />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="end-time">End Time:</label>
+                    <input
+                        required autoFocus
+                        type="time"
+                        className="form-control"
+                        placeholder="End Time"
+                        value={schedule.endTime}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.endTime = evt.target.value
+                                updateSchedule(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="notes">Schedule Notes:</label>
+                    <input className="notes-box"
+                        required autoFocus
                         type="text"
-                        className="form-control"
-                        value={profile.fullName}
+                        classNotes="form-control"
+                        placeholder="Explanation of schedule change or travel"
+                        value={schedule.notes}
                         onChange={
-                            (evt) => {
-                                // TODO: Update name property
-                                const copy = {...profile}
-                                copy.name = evt.target.value
-                                updateProfile(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="address">Address:</label>
-                    <input type="text"
-                        className="form-control"
-                        value={profile.address}
-                        onChange={
-                            (evt) => {
-                                const copy = {...profile}
-                                copy.address = evt.target.value 
-                                updateProfile(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="phoneNumber">Phone Number:</label>
-                    <input type="text"
-                        className="form-control"
-                        value={profile.phoneNumber}
-                        onChange={
-                            (evt) => {
-                                const copy = {...profile}
-                                copy.phoneNumber = evt.target.value 
-                                updateProfile(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="text"
-                        className="form-control"
-                        value={profile.email}
-                        onChange={
-                            (evt) => {
-                                const copy = {...profile}
-                                copy.email = evt.target.value 
-                                updateProfile(copy)
+                            (evt)=> {
+                                const copy = {...schedule}
+                                copy.notes = evt.target.value
+                                updateSchedule(copy)
                             }
                         } />
                 </div>
@@ -128,9 +165,41 @@ useEffect(() => {
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
-                Save Profile
+                Save Schedule
             </button>
         </form>
         </>
     )
 }
+
+
+// TO SAVE WHILE TESTING THE ON CLICK SAVE:
+// "schedules": [
+//     {
+//       "id": 1,
+//       "startDate": "",
+//       "endDate": "",
+//       "startTime": "",
+//       "endTime": "",
+//       "notes": "Christmas Vacation - Louisiana Trip",
+//       "userId": 1
+//     },
+//     {
+//       "id": 1,
+//       "startDate": "",
+//       "endDate": "",
+//       "startTime": "",
+//       "endTime": "",
+//       "notes": "Spring Break - going to Florida",
+//       "userId": 2
+//     },
+//     {
+//       "id": 1,
+//       "startDate": "",
+//       "endDate": "",
+//       "startTime": "",
+//       "endTime": "",
+//       "notes": "Christmas Vacation",
+//       "userId": 1
+//     }
+//   ]

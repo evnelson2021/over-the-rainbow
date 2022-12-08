@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export const UpdateProfileForm = () => {
     // TODO: Provide initial state for profile
@@ -10,7 +11,7 @@ const [profile, updateProfile] = useState({
     userId: 0
 })
 const [feedback, setFeedback] = useState("")
-
+const navigate = useNavigate()
 
 const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -44,15 +45,20 @@ useEffect(() => {
             .then(() => {
                 setFeedback("Profile changes successfully saved")
             })
+            // .then(() => {
+            //     navigate("/dash")
+            // })
         }
 
         
         useEffect(() => {
             if (feedback !== "") {
                 // Clear feedback to make entire element disappear after 3 seconds
-                setTimeout(() => setFeedback(""), 3000);
+                setTimeout(() => setFeedback(""), 3000)
+                // .then((setTimeout(()=> navigate(""), 3000))) 
             }
         }, [feedback])
+        
 
 
     return (

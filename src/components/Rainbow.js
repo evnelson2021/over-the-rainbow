@@ -25,11 +25,14 @@ import { ScheduleList } from "./Schedules/ScheduleList"
 
 export const OverRainbow = () => {
 	return <Routes>
-		<Route path="/home" element={<Home />} />
-		<Route path="/login" element={<Login />} />
+		<Route path="*" element={<>
+				<HomeNav />
+				<Home />
+			</>} />
+		{/* <Route path="/login" element={<Login />} /> */}
 		{/* <Route path="/register" element={<Register />} /> */}
 
-		<Route path="*" element={
+		{/* <Route path="*" element={
 			<Authorized>
 				<>
 					<NavBar />
@@ -37,9 +40,9 @@ export const OverRainbow = () => {
 				</>
 			</Authorized>
 
-		} />
+		} /> */}
 
-		<Route path="/home" element={
+		{/* <Route path="*" element={
 			<Authorized>
 			<>
 				<HomeNav />
@@ -47,16 +50,14 @@ export const OverRainbow = () => {
 			</>
 		</Authorized>
 			
-		} />
+		} /> */}
 
 		<Route path="/login" element={
-			<Authorized>
 			<>
 				<LoginNav />
 				<Login />
 			</>
-		</Authorized>
-			
+
 		} />
 
 		<Route path="/dash" element={

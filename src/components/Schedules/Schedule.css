@@ -4,3 +4,34 @@
     height: 200px;
     text-align: center;
 }
+
+/* 
+.schedule-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin-top: 20px;
+    
+}
+
+.schedule-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.schedule-card{
+    border: 2px solid black;
+    padding: 10px;
+} */
+
+/* .kid1-activities{
+    color:blue;
+}
+
+.kid2-activities{
+    color:purple;
+} */

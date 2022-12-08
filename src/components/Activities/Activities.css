@@ -1,7 +1,7 @@
 .activities-container{
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     padding: 20px;
     margin-top: 20px;
     
@@ -21,9 +21,19 @@
 }
 
 .kid1-activities{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-basis: start;
     color:blue;
 }
 
 .kid2-activities{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    flex-basis: end;
     color:purple;
 }
