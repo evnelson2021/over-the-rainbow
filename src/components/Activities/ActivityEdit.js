@@ -182,8 +182,8 @@ const {activityId} = useParams()
             <select onChange={setKids}>
                 <option defaultValue={0} type="select" id="kidId" className="form-control" required></option>
                 {
-                kids.map ( (kid) => {
-                return <option key-"kidId--{kid. id}" defaultValue={kid.id}>{kid.name}</option>
+                kids.map ((kid) => {
+                return <option key-"kidId--{kid.id}" defaultValue={kid.id}>{kid.name}</option>
                 </select> */}
 
             <fieldset>

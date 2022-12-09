@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import "./Schedule.css"
 
 
@@ -9,36 +9,41 @@ export const ScheduleList = ( ) => {
     const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
 
-
+    
     const navigate = useNavigate()
-
-  //   const deleteButton = () => {
-  //     if (rainbowUserObject.id === scheduleObj.userId) {
-  //         return <button onClick={() => {
-  //             fetch(`http://localhost:8088/schedules/${scheduleObj.id}`, {
-  //                 method: "DELETE",
-  //             })
-  //                 .then(() => {
-  //                     getAllTickets()
-  //                 })
-  //         }} className="schedule_delete">Delete</button>
-  //     }
-  //     else {
-  //         return ""
-  //     }
-  // }
+    const {scheduleId} = useParams()
 
   // Use Effect watches for state change
   // It takes two arguments, a function and an array
   // The array is which states we want to observe
   // The function is what we want to do when that observed state changes
-  useEffect(() => {
+  useEffect(
+    () => {
     fetch(`http://localhost:8088/schedules?_expand=user`)
       .then((res) => res.json())
       .then((schedulesArray) => {
         setSchedules(schedulesArray)
       })
   }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
+
+  const getAllSchedules = () => {
+    fetch(`http://localhost:8088/schedules?_expand=user`)
+      .then((res) => res.json())
+      .then((schedulesArray) => {
+        setSchedules(schedulesArray)
+      })
+  }
+
+  const deleteButton = (id) => {
+        return <button onClick={() => {
+            fetch(`http://localhost:8088/schedules/${id}`, {
+                method: "DELETE",
+            })
+                .then(() => {
+                    getAllSchedules()
+                })
+        }} className="schedule_delete">Delete</button>
+}
 
       // "date": "2022-12-06"
     
@@ -73,7 +78,7 @@ export const ScheduleList = ( ) => {
 
       {schedules.map((scheduleObj) => {
         return (
-          <>
+          
           <div className="schedule-card" key={scheduleObj.id}>
             <div className="schedule">
                 <h3 className="schedule-name">{scheduleObj.notes}</h3>
@@ -85,6 +90,12 @@ export const ScheduleList = ( ) => {
             rainbowUserObject.id === scheduleObj.userId
                 ? <> 
                 <button className="edit_button" onClick={() => navigate(`/schedule/edit-schedule/${scheduleObj.id}`)}>Edit Schedule</button>
+
+                
+                {deleteButton(scheduleObj.id)}
+                
+
+
                 {/* <button className="delete_button" onClick={() => ("/activities")}>Delete Activity</button> */}
                 </>
                 :<>
@@ -93,7 +104,7 @@ export const ScheduleList = ( ) => {
             }    
             
           </div>
-          </>
+          
 
         )
       })}

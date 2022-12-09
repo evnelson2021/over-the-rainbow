@@ -29,7 +29,7 @@ export const ActivityList = ( ) => {
   // The array is which states we want to observe
   // The function is what we want to do when that observed state changes
   useEffect(() => {
-    fetch(`http://localhost:8088/activities?_expand=kid`)
+    fetch(`http://localhost:8088/activities?/_expand=kid`)
       .then((res) => res.json())
       .then((activitiesArray) => {
         setActivities(activitiesArray)
