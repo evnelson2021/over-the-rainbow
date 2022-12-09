@@ -80,7 +80,7 @@ export const ActivityList = ( ) => {
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
-                <button className="edit_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
+                <button className="edit_button" onClick={() => navigate(`/activities/edit-activity/${activityObj.id}`)}>Edit Activity</button>
                 {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER */}
             </div>
           </div>
@@ -101,8 +101,8 @@ export const ActivityList = ( ) => {
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
                 </div>
-                <button className="edit_button" onClick={() => navigate("/activities/edit-activity")}>Edit Activity</button>
-                {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER*/}
+                <button className="edit_button" onClick={() => navigate(`/activities/edit-activity/${activityObj.id}`)}>Edit Activity</button>
+                {/* <button className="add_button" onClick={() => navigate("/activities")}>Delete Activity</button> */}
             </div>
           </div>
         )

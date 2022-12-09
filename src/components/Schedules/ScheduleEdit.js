@@ -3,44 +3,44 @@ import { useNavigate, useParams } from "react-router-dom"
 
 export const ScheduleEditForm = () => {
     // TODO: Provide initial state for schedule
-const [schedule, updateSchedule] = useState({
+    const localRainbowUser = localStorage.getItem("rainbow_user")
+    const rainbowUserObject = JSON.parse(localRainbowUser)
+
+const [schedule, setSchedule] = useState({
         startDate: "",
         endDate: "",
         startTime: "",
         endTime: "",
         notes: "",
-        userId: 0
+        userId: rainbowUserObject.id
 })
 const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
-const {scheduleId} = useParams
+const {scheduleId} = useParams()
 
 
-// const localRainbowUser = localStorage.getItem("rainbow_user")
-//     const rainbowUserObject = JSON.parse(localRainbowUser)
+
 
     // TODO: Get user schedule info from API and update state
 useEffect(() => {
-    fetch(`http://localhost:8088/schedules?=${scheduleId}`)
+    fetch(`http://localhost:8088/schedules?id=${scheduleId}`)
     .then(response => response.json())
     .then((data) => {
-        const scheduleObject = data[{scheduleId}]
-        // WHAT DO I PUT HERE TO ACCESS CORRECT RECORD?????
-        updateSchedule(scheduleObject)
+        setSchedule(data[0])
     })
 }, [])
 
 
 
-    const handleSaveButtonClick = (event) => {
-        event.preventDefault()
+    const handleSaveButtonClick = (clickEvent) => {
+        clickEvent.preventDefault()
 
         /*
             TODO: Perform the PUT fetch() call here to update the schedule.
             Navigate user to home page when done.
         */
 
-            fetch(`http://localhost:8088/schedule/${schedule.id}`, {
+            fetch(`http://localhost:8088/schedules/${schedule.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -52,7 +52,7 @@ useEffect(() => {
                 setFeedback("Schedule changes successfully saved")
             })
             .then(() => {
-                    setTimeout(() => navigate("/schedule"), 4000);
+                    setTimeout(() => navigate("/schedule"), 3000);
         })
     }
         
@@ -62,10 +62,6 @@ useEffect(() => {
                 setTimeout(() => setFeedback(""), 3000);
             }
         }, [feedback])
-
-        // USE THIS TO NAVIGATE BACK TO PAGE ON TIMER AFTER SAVE
-        // .then(() => {
-        //     setTimeout(() => navigate("/schedule"), 4000);
 
     return (
         <>
@@ -82,12 +78,12 @@ useEffect(() => {
                         type="date"
                         className="form-control"
                         placeholder="Date of Schedule"
-                        value={schedule.startDate} 
+                        defaultValue={schedule.startDate} 
                         onChange={
                             (evt)=> {
                                 const copy = {...schedule}
-                                copy.date = evt.target.value
-                                updateSchedule(copy)
+                                copy.startDate = evt.target.value
+                                setSchedule(copy)
                             }
                         } />
                 </div>
@@ -104,8 +100,8 @@ useEffect(() => {
                         onChange={
                             (evt)=> {
                                 const copy = {...schedule}
-                                copy.date = evt.target.value
-                                updateSchedule(copy)
+                                copy.endDate = evt.target.value
+                                setSchedule(copy)
                             }
                         } />
                 </div>
@@ -123,7 +119,7 @@ useEffect(() => {
                             (evt)=> {
                                 const copy = {...schedule}
                                 copy.startTime = evt.target.value
-                                updateSchedule(copy)
+                                setSchedule(copy)
                             }
                         } />
                 </div>
@@ -139,7 +135,7 @@ useEffect(() => {
                             (evt)=> {
                                 const copy = {...schedule}
                                 copy.endTime = evt.target.value
-                                updateSchedule(copy)
+                                setSchedule(copy)
                             }
                         } />
                 </div>
@@ -147,17 +143,17 @@ useEffect(() => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="notes">Schedule Notes:</label>
-                    <input className="notes-box"
+                    <input
                         required autoFocus
                         type="text"
-                        classNotes="form-control"
+                        className="notes-box"
                         placeholder="Explanation of schedule change or travel"
                         value={schedule.notes}
                         onChange={
                             (evt)=> {
                                 const copy = {...schedule}
                                 copy.notes = evt.target.value
-                                updateSchedule(copy)
+                                setSchedule(copy)
                             }
                         } />
                 </div>

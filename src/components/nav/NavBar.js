@@ -10,7 +10,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/activities">Activities</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="activities/edit-activity">Edit Activities</Link>
+                <Link className="navbar__link" to="/activities/edit-activity/:activityId">Edit Activities</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="activities/add-activity">Add Activities</Link>

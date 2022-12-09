@@ -8,6 +8,7 @@ import { Login } from "../auth/Login"
 import { AddScheduleForm } from "../Schedules/AddScheduleForm"
 import { Home } from "../home/Home"
 import { ScheduleEditForm } from "../Schedules/ScheduleEdit"
+import { ScheduleList } from "../Schedules/ScheduleList"
 
 
 
@@ -27,10 +28,10 @@ export const ApplicationViews = () => {
                 <Route path="edit-profile" element={ <UpdateProfileForm /> } />
                 <Route path="dash" element={ <></> } />
                 <Route path="activities" element={ <ActivityContainer /> } />
-                <Route path="activities/edit-activity" element={ <ActivityEditForm /> } />
+                <Route path="/activities/edit-activity/:activityId" element={ <ActivityEditForm /> } />
                 <Route path="activities/add-activity" element={ <AddActivityForm /> } />
-                <Route path="schedule" element={ <></> } />
-                <Route path="/:scheduleId/edit-schedule" element={ <ScheduleEditForm /> } />
+                <Route path="schedule" element={ <ScheduleList /> } />
+                <Route path="/schedule/edit-schedule/:scheduleId" element={ <ScheduleEditForm /> } />
                 <Route path="schedule/add-schedule" element={ <AddScheduleForm /> } />
 
             

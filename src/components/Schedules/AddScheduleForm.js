@@ -8,13 +8,17 @@ export const AddScheduleForm = () => {
         TODO: Add the correct default properties to the
         initial state object
     */
+
+        const localRainbowUser = localStorage.getItem("rainbow_user")
+        const rainbowUserObject = JSON.parse(localRainbowUser)
+
     const [schedule, addSchedule] = useState({
         startDate: "",
         endDate: "",
         startTime: "",
         endTime: "",
         notes: "",
-        userId: 0
+        userId: rainbowUserObject.id
     })
 
     const navigate = useNavigate()
@@ -28,8 +32,7 @@ export const AddScheduleForm = () => {
     //   }, [])
 
 
-    const localRainbowUser = localStorage.getItem("rainbow_user")
-    const rainbowUserObject = JSON.parse(localRainbowUser)
+   
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -84,7 +87,7 @@ export const AddScheduleForm = () => {
                         onChange={
                             (evt)=> {
                                 const copy = {...schedule}
-                                copy.date = evt.target.value
+                                copy.startDate = evt.target.value
                                 addSchedule(copy)
                             }
                         } />
@@ -104,7 +107,7 @@ export const AddScheduleForm = () => {
                         onChange={
                             (evt)=> {
                                 const copy = {...schedule}
-                                copy.date = evt.target.value
+                                copy.endDate = evt.target.value
                                 addSchedule(copy)
                             }
                         } />
@@ -147,10 +150,10 @@ export const AddScheduleForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="notes">Schedule Notes:</label>
-                    <input className="notes-box"
+                    <input
                         required autoFocus
                         type="text"
-                        classNotes="form-control"
+                        className="notes-box"
                         placeholder="Explanation of schedule change or travel"
                         value={schedule.notes}
                         onChange={

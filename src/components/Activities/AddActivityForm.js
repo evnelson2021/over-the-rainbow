@@ -75,6 +75,9 @@ export const AddActivityForm = () => {
             })
     }
 
+    // HandlebothkidsSave button that creates two separate activities with kidId 1 and 2 run POST twice
+    // use radio buttons - value of 3 on third option - if id is 3, do it twice, otherwise just once with appropriate kidId
+
     return (
         <form className="activityForm">
             <h2 className="activityForm__title">New Activity</h2>

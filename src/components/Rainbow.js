@@ -121,7 +121,7 @@ export const OverRainbow = () => {
 			
 		} />
 
-		<Route path="/activities/edit-activity" element={
+		<Route path="/activities/edit-activity/:activityId" element={
 			<Authorized>
 			<>
 				<ShowActListLogoutNav />
@@ -131,7 +131,7 @@ export const OverRainbow = () => {
 			
 		} />
 
-<Route path="/schedule/edit-schedule" element={
+<Route path="/schedule/edit-schedule/:scheduleId" element={
 			<Authorized>
 			<>
 				<ShowSchedListLogoutNav />
@@ -140,16 +140,6 @@ export const OverRainbow = () => {
 		</Authorized>
 			
 		} />
-
-		{/* <Route path="/activities/edit-activity" element={
-			<Authorized>
-			<>
-				<ActivityEditNav />
-				<ActivityEditForm />
-			</>
-		</Authorized>
-			
-		} /> */}
 	</Routes>
 }
 

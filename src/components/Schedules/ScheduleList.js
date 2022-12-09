@@ -10,7 +10,23 @@ export const ScheduleList = ( ) => {
     const rainbowUserObject = JSON.parse(localRainbowUser)
 
 
-    const Navigate = useNavigate()
+    const navigate = useNavigate()
+
+  //   const deleteButton = () => {
+  //     if (rainbowUserObject.id === scheduleObj.userId) {
+  //         return <button onClick={() => {
+  //             fetch(`http://localhost:8088/schedules/${scheduleObj.id}`, {
+  //                 method: "DELETE",
+  //             })
+  //                 .then(() => {
+  //                     getAllTickets()
+  //                 })
+  //         }} className="schedule_delete">Delete</button>
+  //     }
+  //     else {
+  //         return ""
+  //     }
+  // }
 
   // Use Effect watches for state change
   // It takes two arguments, a function and an array
@@ -53,7 +69,7 @@ export const ScheduleList = ( ) => {
     <div className="schedule-container">
     <h1 className="schedule-title">Schedule</h1>
 
-    <button className="add_button" onClick={() => Navigate("/schedule/add-schedule")}>New Schedule Change</button>
+    <button className="add_button" onClick={() => navigate("/schedule/add-schedule")}>New Schedule Change</button>
 
       {schedules.map((scheduleObj) => {
         return (
@@ -68,7 +84,8 @@ export const ScheduleList = ( ) => {
             {
             rainbowUserObject.id === scheduleObj.userId
                 ? <> 
-                <button className="edit_button" onClick={() => Navigate("/schedule/:scheduleId/edit-schedule")}>Edit Schedule</button>
+                <button className="edit_button" onClick={() => navigate(`/schedule/edit-schedule/${scheduleObj.id}`)}>Edit Schedule</button>
+                {/* <button className="delete_button" onClick={() => ("/activities")}>Delete Activity</button> */}
                 </>
                 :<>
                 {/* Can I put code in the ELSE part of this ternary statement to "accept or decline" the change? */}

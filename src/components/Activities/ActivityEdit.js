@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 export const ActivityEditForm = () => {
     // TODO: Provide initial state for profile
-const [activity, updateActivity] = useState({
+const [activity, setActivity] = useState({
     name: "",
     location: "",
     date: "",
@@ -13,9 +13,9 @@ const [activity, updateActivity] = useState({
     kidId: 0
 })
 const [feedback, setFeedback] = useState("")
-
-const { activityId } = useParams
 const navigate = useNavigate()
+const {activityId} = useParams()
+
 
 // const localRainbowUser = localStorage.getItem("rainbow_user")
 //     const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -23,31 +23,22 @@ const navigate = useNavigate()
     // TODO: Get activity info from API and update state
 
     useEffect(() => {
-        fetch (`http://localhost:8088/activities/${activityId}`)
+        fetch (`http://localhost:8088/activities?id=${activityId}`)
             .then (response => response.json())
             .then ((data) => {
-                updateActivity(data)
+                setActivity(data[0])
             })
-    }, [ activityId ])
+    }, [])
 
-// useEffect(() => {
-//     fetch(`http://localhost:8088/activities`)
-//     .then(response => response.json())
-//     .then((data) => {
-//         const activityObject = data[0]
-//         updateActivity(activityObject)
-//     })
-// }, [])
-
-    const handleSaveButtonClick = (event) => {
-        event.preventDefault()
+    const handleSaveButtonClick = (clickEvent) => {
+        clickEvent.preventDefault()
 
         /*
             TODO: Perform the PUT fetch() call here to update the activity.
             Navigate user to home page when done.
         */
 
-            fetch(`http://localhost:8088/activities?/${activity.id}`, {
+            fetch(`http://localhost:8088/activities/${activity.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -56,26 +47,22 @@ const navigate = useNavigate()
             })
             .then(response => response.json())
             .then(() => {
-                setFeedback(("Activity changes successfully saved"), 3000)
+                setFeedback("Activity changes successfully saved")
             })
             .then(() => {
-                navigate(("/activities"), 3000)
+                setTimeout(() => navigate("/activities"), 3000);
             })
         }
         
         useEffect(() => {
             if (feedback !== "") {
                 // Clear feedback to make entire element disappear after 3 seconds
-                setTimeout(() => setFeedback(""), 3000)
-                .then(() => {
-                    navigate("/activities")
-                })
-            }
+                setTimeout(() => setFeedback(""), 3000);
+                // .then(() => {
+                //     navigate("/activities")
+                }
         }, [feedback])
 
-        // .then(() => {
-        //     setTimeout(() => navigate("/schedule"), 4000);
-        // })
 
     return (
         <>
@@ -92,12 +79,12 @@ const navigate = useNavigate()
                         type="text"
                         className="form-control"
                         placeholder="Name of Activity"
-                        value={activity.name}
+                        defaultValue={activity?.name}
                         onChange={
                             (evt)=> {
                                 const copy = {...activity}
-                                copy.name = evt.target.value
-                                updateActivity(copy)
+                                copy.name = evt.target.defaultValue
+                                setActivity(copy)
                             }
                         } />
                 </div>
@@ -110,12 +97,12 @@ const navigate = useNavigate()
                         type="text"
                         className="form-control"
                         placeholder="Location of Activity"
-                        value={activity.location}
+                        defaultValue={activity?.location}
                         onChange={
                             (evt)=> {
                                 const copy = {...activity}
-                                copy.location = evt.target.value
-                                updateActivity(copy)
+                                copy.location = evt.target.defaultValue
+                                setActivity(copy)
                             }
                         } />
                 </div>
@@ -128,12 +115,12 @@ const navigate = useNavigate()
                         type="date"
                         className="form-control"
                         placeholder="Date of Activity"
-                        value={activity.date} 
+                        defaultValue={activity?.date} 
                         onChange={
                             (evt)=> {
                                 const copy = {...activity}
-                                copy.date = evt.target.value
-                                updateActivity(copy)
+                                copy.date = evt.target.defaultValue
+                                setActivity(copy)
                             }
                         } />
                 </div>
@@ -148,12 +135,12 @@ const navigate = useNavigate()
                         type="time"
                         className="form-control"
                         placeholder="Start Time"
-                        value={activity.startTime}
+                        defaultValue={activity?.startTime}
                         onChange={
                             (evt)=> {
                                 const copy = {...activity}
-                                copy.startTime = evt.target.value
-                                updateActivity(copy)
+                                copy.startTime = evt.target.defaultValue
+                                setActivity(copy)
                             }
                         } />
                 </div>
@@ -164,12 +151,12 @@ const navigate = useNavigate()
                         type="time"
                         className="form-control"
                         placeholder="End Time"
-                        value={activity.endTime}
+                        defaultValue={activity?.endTime}
                         onChange={
                             (evt)=> {
                                 const copy = {...activity}
-                                copy.endTime = evt.target.value
-                                updateActivity(copy)
+                                copy.endTime = evt.target.defaultValue
+                                setActivity(copy)
                             }
                         } />
                 </div>
@@ -181,44 +168,44 @@ const navigate = useNavigate()
                         type="checkbox" 
                         id="kidId" 
                         className="form-control"
-                        value={activity.kidId}
+                        defaultValue={activity.kidId}
                         onChange={
                             (evt)=> {
                                 const copy = {...activity}
                                 copy.kidId = evt.target.checked
-                                updateActivity(copy)
+                                setActivity(copy)
                             }
                         }/>
                     </select> */}
 
             {/* <label htmlFor="kids">Kids</label><br></br> 
             <select onChange={setKids}>
-                <option value={0} type="select" id="kidId" className="form-control" required></option>
+                <option defaultValue={0} type="select" id="kidId" className="form-control" required></option>
                 {
                 kids.map ( (kid) => {
-                return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
+                return <option key-"kidId--{kid. id}" defaultValue={kid.id}>{kid.name}</option>
                 </select> */}
 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Maverick:</label>
                     <input type="checkbox"
-                        value={activity.kidId === 1}
+                        defaultValue={activity?.kidId === 1}
                         onChange={
                             (evt) => {
                                 const copy = {...activity}
-                                copy.kidId = evt.target.value
-                                updateActivity(copy)
+                                copy.kidId = parseInt(evt.target.defaultValue)
+                                setActivity(copy)
                             }
                         } />
                         <label htmlFor="name">Adaline:</label>
                         <input type="checkbox"
-                        value={activity.kidId === 2}
+                        defaultValue={activity?.kidId === 2}
                         onChange={
                             (evt) => {
                                 const copy = {...activity}
-                                copy.kidId = evt.target.value
-                                updateActivity(copy)
+                                copy.kidId = parseInt(evt.target.defaultValue)
+                                setActivity(copy)
                             }
                         } />
                 </div>
