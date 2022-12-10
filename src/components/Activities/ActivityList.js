@@ -5,6 +5,9 @@ import "./Activities.css"
 
 // export const ActivityList = ( {searchTermState} ) => {
 
+  const localRainbowUser = localStorage.getItem("rainbow_user")
+  const rainbowUserObject = JSON.parse(localRainbowUser)
+
 export const ActivityList = ( ) => {
     const [activities, setActivities] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
     // const [filteredActivities, setFiltered] = useState([])
@@ -29,12 +32,31 @@ export const ActivityList = ( ) => {
   // The array is which states we want to observe
   // The function is what we want to do when that observed state changes
   useEffect(() => {
-    fetch(`http://localhost:8088/activities?/_expand=kid`)
+    fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`)
       .then((res) => res.json())
       .then((activitiesArray) => {
         setActivities(activitiesArray)
       })
   }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
+
+  const getAllActivities = () => {
+    fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`)
+      .then((res) => res.json())
+      .then((activitiesArray) => {
+        setActivities(activitiesArray)
+      })
+  }
+
+  const deleteButton = (id) => {
+        return <button onClick={() => {
+            fetch(`http://localhost:8088/activities/${id}`, {
+                method: "DELETE",
+            })
+                .then(() => {
+                    getAllActivities()
+                })
+        }} className="schedule_delete">Delete</button>
+}
 
       // "date": "2022-12-06"
     
@@ -54,9 +76,7 @@ export const ActivityList = ( ) => {
 
 // compare array index [0] year, assign to older or newer, 
   return (
-    
     <>
-
     <button className="add_button" onClick={() => navigate("/activities/add-activity")}>New Activity</button>
     <h1 className="activities-title">Activities</h1>
 
@@ -79,11 +99,23 @@ export const ActivityList = ( ) => {
                 <p className="activity-details"> Date: {formatDate(activityObj)}</p>
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
+                <p>Submitted by: {activityObj.user.fullName}</p>
                 </div>
-                <button className="edit_button" onClick={() => navigate(`/activities/edit-activity/${activityObj.id}`)}>Edit Activity</button>
-                {/* <button className="add_button" onClick={() => navigate("/activities/add-activity")}>Delete Activity</button> JUST A PLACEHOLDER */}
-            </div>
-          </div>
+                {
+                rainbowUserObject.id === activityObj.userId
+                    ? <> 
+                    <button className="edit_button" onClick={() => navigate(`/activities/edit-activity/${activityObj.id}`)}>Edit Activity</button>
+
+                    {deleteButton(activityObj.id)}
+                    </>
+                    :<>
+                    </>
+                }
+                    
+                
+              </div>
+              </div>
+
         )
       })}
     
@@ -100,9 +132,18 @@ export const ActivityList = ( ) => {
                 <p className="activity-details"> Date: {formatDate(activityObj)}</p>
                 <p className="activity-details">Time: {activityObj.startTime}</p>
                 <p className="activity-details">Time: {activityObj.endTime}</p>
+                <p>Submitted by: {activityObj.user.fullName}</p>
                 </div>
-                <button className="edit_button" onClick={() => navigate(`/activities/edit-activity/${activityObj.id}`)}>Edit Activity</button>
-                {/* <button className="add_button" onClick={() => navigate("/activities")}>Delete Activity</button> */}
+                {
+                rainbowUserObject.id === activityObj.userId
+                    ? <> 
+                    <button className="edit_button" onClick={() => navigate(`/activities/edit-activity/${activityObj.id}`)}>Edit Activity</button>
+
+                    {deleteButton(activityObj.id)}
+                    </>
+                    :<>
+                    </>
+                }
             </div>
           </div>
         )

@@ -74,7 +74,7 @@ export const ScheduleList = ( ) => {
     <div className="schedule-container">
     <h1 className="schedule-title">Schedule</h1>
 
-    <button className="add_button" onClick={() => navigate("/schedule/add-schedule")}>New Schedule Change</button>
+    <button className="add_button" onClick={() => navigate("/schedule/add-schedule")}>New Schedule Item</button>
 
       {schedules.map((scheduleObj) => {
         return (

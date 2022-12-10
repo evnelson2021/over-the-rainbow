@@ -4,13 +4,18 @@ import { useNavigate, useParams } from "react-router-dom"
 
 export const ActivityEditForm = () => {
     // TODO: Provide initial state for profile
+
+    const localRainbowUser = localStorage.getItem("rainbow_user")
+    const rainbowUserObject = JSON.parse(localRainbowUser)
+
 const [activity, setActivity] = useState({
     name: "",
     location: "",
     date: "",
     startTime: "",
     endTime: "",
-    kidId: 0
+    kidId: 0,
+    userId: rainbowUserObject.id
 })
 const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
@@ -23,11 +28,11 @@ const {activityId} = useParams()
     // TODO: Get activity info from API and update state
 
     useEffect(() => {
-        fetch (`http://localhost:8088/activities?id=${activityId}`)
-            .then (response => response.json())
-            .then ((data) => {
-                setActivity(data[0])
-            })
+        fetch(`http://localhost:8088/activities?id=${activityId}`)
+        .then(response => response.json())
+        .then((data) => {
+            setActivity(data[0])
+        })
     }, [])
 
     const handleSaveButtonClick = (clickEvent) => {
@@ -58,8 +63,6 @@ const {activityId} = useParams()
             if (feedback !== "") {
                 // Clear feedback to make entire element disappear after 3 seconds
                 setTimeout(() => setFeedback(""), 3000);
-                // .then(() => {
-                //     navigate("/activities")
                 }
         }, [feedback])
 
@@ -70,7 +73,7 @@ const {activityId} = useParams()
             {feedback}
         </div>
         <form className="activity">
-            <h2 className="activity__title">Update Activity Information</h2>
+            <h2 className="activityEdit__title">Update Activity Information</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Activity Name:</label>
@@ -81,9 +84,9 @@ const {activityId} = useParams()
                         placeholder="Name of Activity"
                         defaultValue={activity?.name}
                         onChange={
-                            (evt)=> {
+                            (evt) => {
                                 const copy = {...activity}
-                                copy.name = evt.target.defaultValue
+                                copy.name = evt.target.value
                                 setActivity(copy)
                             }
                         } />
@@ -99,9 +102,9 @@ const {activityId} = useParams()
                         placeholder="Location of Activity"
                         defaultValue={activity?.location}
                         onChange={
-                            (evt)=> {
+                            (evt) => {
                                 const copy = {...activity}
-                                copy.location = evt.target.defaultValue
+                                copy.location = evt.target.value
                                 setActivity(copy)
                             }
                         } />
@@ -117,9 +120,9 @@ const {activityId} = useParams()
                         placeholder="Date of Activity"
                         defaultValue={activity?.date} 
                         onChange={
-                            (evt)=> {
+                            (evt) => {
                                 const copy = {...activity}
-                                copy.date = evt.target.defaultValue
+                                copy.date = evt.target.value
                                 setActivity(copy)
                             }
                         } />
@@ -137,9 +140,9 @@ const {activityId} = useParams()
                         placeholder="Start Time"
                         defaultValue={activity?.startTime}
                         onChange={
-                            (evt)=> {
+                            (evt) => {
                                 const copy = {...activity}
-                                copy.startTime = evt.target.defaultValue
+                                copy.startTime = evt.target.value
                                 setActivity(copy)
                             }
                         } />
@@ -153,15 +156,51 @@ const {activityId} = useParams()
                         placeholder="End Time"
                         defaultValue={activity?.endTime}
                         onChange={
-                            (evt)=> {
+                            (evt) => {
                                 const copy = {...activity}
-                                copy.endTime = evt.target.defaultValue
+                                copy.endTime = evt.target.value
                                 setActivity(copy)
                             }
                         } />
                 </div>
             </fieldset>
-                    {/* <label htmlFor="kidId">Kid(s)</label><br></br>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Maverick:</label>
+                    <input type="checkbox"
+                        defaultValue= "1"
+                        onChange={
+                            (evt) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(evt.target.defaultValue)
+                                setActivity(copy)
+                            }
+                        } />
+                        <label htmlFor="name">Adaline:</label>
+                        <input type="checkbox"
+                        defaultValue= "2"
+                        onChange={
+                            (evt) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(evt.target.defaultValue)
+                                setActivity(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <button
+                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                className="btn btn-primary">
+                Save Activity
+            </button>
+        </form>
+        </>
+    )
+}
+
+
+// JUST PUTTING THIS HERE FOR LATER - MAKING A DROPDOWN - will need "Both" option with an id of 3 to add to both activity lists
+{/* <label htmlFor="kidId">Kid(s)</label><br></br>
                     <select>
                         <option 
                         required autoFocus
@@ -186,36 +225,16 @@ const {activityId} = useParams()
                 return <option key-"kidId--{kid.id}" defaultValue={kid.id}>{kid.name}</option>
                 </select> */}
 
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="name">Maverick:</label>
-                    <input type="checkbox"
-                        defaultValue={activity?.kidId === 1}
-                        onChange={
-                            (evt) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(evt.target.defaultValue)
-                                setActivity(copy)
-                            }
-                        } />
-                        <label htmlFor="name">Adaline:</label>
+
+
+// LABEL FOR ID3 CHECKBOX
+                {/* <label htmlFor="name">Both:</label>
                         <input type="checkbox"
-                        defaultValue={activity?.kidId === 2}
+                        defaultValue= "3"
                         onChange={
                             (evt) => {
                                 const copy = {...activity}
                                 copy.kidId = parseInt(evt.target.defaultValue)
                                 setActivity(copy)
                             }
-                        } />
-                </div>
-            </fieldset>
-            <button
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-primary">
-                Save Activity
-            </button>
-        </form>
-        </>
-    )
-}
+                        } /> */}

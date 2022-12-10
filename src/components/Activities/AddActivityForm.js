@@ -7,13 +7,18 @@ export const AddActivityForm = () => {
         TODO: Add the correct default properties to the
         initial state object
     */
+
+        const localRainbowUser = localStorage.getItem("rainbow_user")
+        const rainbowUserObject = JSON.parse(localRainbowUser)
+
     const [activity, addActivity] = useState({
         name: "",
         location: "",
         date: "",
         startTime: "",
         endTime: "",
-        kidId: 0
+        kidId: 0,
+        userId: rainbowUserObject.id
     })
 
     const [feedback, setFeedback] = useState("")
@@ -55,11 +60,12 @@ export const AddActivityForm = () => {
             date: activity.date,
             startTime: activity.startTime,
             endTime: activity.endTime,
-            kidId: activity.kidId
+            kidId: activity.kidId,
+            userId: rainbowUserObject.id
         } 
 
         // TODO: Perform the fetch() to POST the object to the API
-        return fetch(`http://localhost:8088/activities?_expand=kid`, {
+        return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -71,7 +77,7 @@ export const AddActivityForm = () => {
                 setFeedback(("Activity changes successfully saved"), 3000)
             })
             .then(() => {
-                navigate(("/activities"), 3000)
+                setTimeout(() => navigate("/activities"), 3000)
             })
     }
 
@@ -171,31 +177,6 @@ export const AddActivityForm = () => {
                         } />
                 </div>
             </fieldset>
-                    {/* <label htmlFor="kidId">Kid(s)</label><br></br>
-                    <select>
-                        <option 
-                        required autoFocus
-                        type="checkbox" 
-                        id="kidId" 
-                        className="form-control"
-                        value={activity.kidId}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...activity}
-                                copy.kidId = evt.target.checked
-                                addActivity(copy)
-                            }
-                        }/>
-                    </select> */}
-
-            {/* <label htmlFor="kids">Kids</label><br></br> 
-            <select onChange={setKids}>
-                <option value={0} type="select" id="kidId" className="form-control" required></option>
-                {
-                kids.map ( (kid) => {
-                return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
-                </select> */}
-
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Maverick:</label>
@@ -228,3 +209,30 @@ export const AddActivityForm = () => {
         </form>
     )
 }
+
+
+// JUST PUTTING THIS HERE FOR LATER - MAKING A DROPDOWN - will need "Both" option with an id of 3 to add to both activity lists
+{/* <label htmlFor="kidId">Kid(s)</label><br></br>
+                    <select>
+                        <option 
+                        required autoFocus
+                        type="checkbox" 
+                        id="kidId" 
+                        className="form-control"
+                        value={activity.kidId}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...activity}
+                                copy.kidId = evt.target.checked
+                                addActivity(copy)
+                            }
+                        }/>
+                    </select> */}
+
+            {/* <label htmlFor="kids">Kids</label><br></br> 
+            <select onChange={setKids}>
+                <option value={0} type="select" id="kidId" className="form-control" required></option>
+                {
+                kids.map ( (kid) => {
+                return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
+                </select> */}

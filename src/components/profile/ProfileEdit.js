@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 export const UpdateProfileForm = () => {
     // TODO: Provide initial state for profile
-const [profile, updateProfile] = useState({
+const [profile, setProfile] = useState({
     fullName: "",
     address: "",
     phoneNumber: "",
@@ -22,7 +22,7 @@ useEffect(() => {
     .then(response => response.json())
     .then((data) => {
         const userObject = data[0]
-        updateProfile(userObject)
+        setProfile(userObject)
     })
 }, [])
 
@@ -80,8 +80,8 @@ useEffect(() => {
                             (evt) => {
                                 // TODO: Update name property
                                 const copy = {...profile}
-                                copy.name = evt.target.value
-                                updateProfile(copy)
+                                copy.fullName = evt.target.value
+                                setProfile(copy)
                             }
                         } />
                 </div>
@@ -96,7 +96,7 @@ useEffect(() => {
                             (evt) => {
                                 const copy = {...profile}
                                 copy.address = evt.target.value 
-                                updateProfile(copy)
+                                setProfile(copy)
                             }
                         } />
                 </div>
@@ -111,7 +111,7 @@ useEffect(() => {
                             (evt) => {
                                 const copy = {...profile}
                                 copy.phoneNumber = evt.target.value 
-                                updateProfile(copy)
+                                setProfile(copy)
                             }
                         } />
                 </div>
@@ -126,7 +126,7 @@ useEffect(() => {
                             (evt) => {
                                 const copy = {...profile}
                                 copy.email = evt.target.value 
-                                updateProfile(copy)
+                                setProfile(copy)
                             }
                         } />
                 </div>

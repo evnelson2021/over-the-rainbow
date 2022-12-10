@@ -8,7 +8,7 @@ export const AddScheduleForm = () => {
         TODO: Add the correct default properties to the
         initial state object
     */
-
+        
         const localRainbowUser = localStorage.getItem("rainbow_user")
         const rainbowUserObject = JSON.parse(localRainbowUser)
 

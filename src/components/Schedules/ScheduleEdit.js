@@ -18,9 +18,6 @@ const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
 const {scheduleId} = useParams()
 
-
-
-
     // TODO: Get user schedule info from API and update state
 useEffect(() => {
     fetch(`http://localhost:8088/schedules?id=${scheduleId}`)
@@ -29,8 +26,6 @@ useEffect(() => {
         setSchedule(data[0])
     })
 }, [])
-
-
 
     const handleSaveButtonClick = (clickEvent) => {
         clickEvent.preventDefault()
