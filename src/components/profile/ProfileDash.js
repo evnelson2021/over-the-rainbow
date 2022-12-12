@@ -10,14 +10,14 @@ export const Dashboard = () => {
 
     return (
         <ol className="dashboard">
-            <li className="dash__item active">
-                <Link className="navbar__link" to="" onClick={() => {
+            <li className="Activities__item active">
+                <Link className="activity__link" to="" onClick={() => {
                     navigate("/activities")
                     refreshPage()
                 }}>Activities</Link>
             </li>
-            <li className="dash__item active">
-                <Link className="navbar__link" to="/schedule">Parenting Schedule</Link>
+            <li className="Schedules__item active">
+                <Link className="schedule__link" to="/schedule">Schedule</Link>
             </li>
         </ol>
 )

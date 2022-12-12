@@ -1,15 +1,60 @@
+a:visited {text-decoration: none; color: rgb(80, 62, 62); }
+a:hover { text-decoration: none; color:teal; }
+
 .navbar {
+    background-image: url("./NavImg.png");
     display: flex;
     flex-wrap: nowrap;
-    justify-content: left;
+    /* justify-content: left; */
+    height: 175px;
+    margin: 0;
 }
 
 .navbar__item {
-    flex-basis: 20%;
+    /* flex-basis: 20%; */
     list-style-type: none;
+}
+
+.navbar__link{
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 25px;
 }
 
 .navbar__logout {
     margin-left: auto;
 }
 
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    justify-content: space-evenly;
+}
+
+.Activities__item{
+    margin-top: 150px;
+    list-style-type: none;
+    /* justify-content: space-evenly */
+}
+
+.Schedules__item{
+    margin-top: 150px;
+    list-style-type: none;
+}
+
+.activity__link{
+    background-color: blanchedalmond;
+    /* background-image: url("./NavImg.png"); */
+    font-size: x-large;
+    margin-top: 650px;
+    padding: 125px;
+    border: dotted black 1px;
+}
+
+.schedule__link{
+    background-color: blanchedalmond;
+    /* background-image: url("./NavImg.png"); */
+    font-size: x-large;
+    padding: 125px;
+    border: dotted black 1px;
+}
