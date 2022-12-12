@@ -82,7 +82,7 @@ export const ScheduleList = ( ) => {
           <div className="schedule-card" key={scheduleObj.id}>
             <div className="schedule">
                 <h3 className="schedule-name">{scheduleObj.notes}</h3>
-                <p className="schedule-details"> From Start Date: {formatStartDate(scheduleObj)} at Start Time: {scheduleObj.startTime} through End Date: {formatEndDate(scheduleObj)} - End Time: {scheduleObj.endTime}</p>
+                <p className="schedule-details"> From {formatStartDate(scheduleObj)} at {scheduleObj.startTime} through {formatEndDate(scheduleObj)} at {scheduleObj.endTime}</p>
                 <p>Submitted by: {scheduleObj.user.fullName}</p>
             </div>
 
