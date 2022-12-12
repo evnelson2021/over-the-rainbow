@@ -9,7 +9,7 @@ import { AddScheduleForm } from "../Schedules/AddScheduleForm"
 import { Home } from "../home/Home"
 import { ScheduleEditForm } from "../Schedules/ScheduleEdit"
 import { ScheduleList } from "../Schedules/ScheduleList"
-
+// import NavImg from "./NavImg.png"
 
 
 export const ApplicationViews = () => {

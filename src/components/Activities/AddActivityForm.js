@@ -65,6 +65,14 @@ export const AddActivityForm = () => {
         } 
 
         // TODO: Perform the fetch() to POST the object to the API
+        if (
+            activity.name &&
+            activity.location &&
+            activity.date &&
+            activity.startTime &&
+            activity.endTime &&
+            activity.kidId
+          ) {
         return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
             method: "POST",
             headers: {
@@ -74,11 +82,14 @@ export const AddActivityForm = () => {
         })
             .then(response => response.json())
             .then(() => {
-                setFeedback(("Activity changes successfully saved"), 3000)
+                setFeedback(("New Activity Saved"), 2000)
             })
             .then(() => {
-                setTimeout(() => navigate("/activities"), 3000)
+                setTimeout(() => navigate("/activities"), 2000)
             })
+        } else {
+            alert('Please complete the form')
+          }
     }
 
     // HandlebothkidsSave button that creates two separate activities with kidId 1 and 2 run POST twice
