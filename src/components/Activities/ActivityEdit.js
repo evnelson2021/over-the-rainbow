@@ -167,6 +167,32 @@ const {activityId} = useParams()
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Maverick:</label>
+                    <input type="radio"
+                        name="kid"
+                        value="1"
+                        onClick={
+                            (click) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(click.target.value)
+                                setActivity(copy)
+                            }
+                        } />
+                    <label htmlFor="name">Adaline:</label>
+                    <input type="radio"
+                        name="kid"
+                        value= "2"
+                        onClick={
+                            (click) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(click.target.value)
+                                setActivity(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            {/* <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Maverick:</label>
                     <input type="checkbox"
                         defaultValue= "1"
                         onChange={
@@ -187,7 +213,7 @@ const {activityId} = useParams()
                             }
                         } />
                 </div>
-            </fieldset>
+            </fieldset> */}
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">

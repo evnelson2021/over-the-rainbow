@@ -188,7 +188,7 @@ export const AddActivityForm = () => {
                         } />
                 </div>
             </fieldset>
-            <fieldset>
+            {/* <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Maverick:</label>
                     <input type="checkbox"
@@ -207,6 +207,33 @@ export const AddActivityForm = () => {
                             (evt) => {
                                 const copy = {...activity}
                                 copy.kidId = parseInt(evt.target.value)
+                                addActivity(copy)
+                            }
+                        } />
+                </div>
+            </fieldset> */}
+
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Maverick:</label>
+                    <input type="radio"
+                        name="kid"
+                        value="1"
+                        onClick={
+                            (click) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(click.target.value)
+                                addActivity(copy)
+                            }
+                        } />
+                    <label htmlFor="name">Adaline:</label>
+                    <input type="radio"
+                        name="kid"
+                        value= "2"
+                        onClick={
+                            (click) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(click.target.value)
                                 addActivity(copy)
                             }
                         } />
@@ -247,3 +274,81 @@ export const AddActivityForm = () => {
                 kids.map ( (kid) => {
                 return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
                 </select> */}
+
+
+                // return (
+                //     <div onChange={this.onChangeValue}>
+                //       <input type="radio" value="Male" name="gender" /> Male
+                //       <input type="radio" value="Female" name="gender" /> Female
+                //       <input type="radio" value="Other" name="gender" /> Other
+                //     </div>
+                //   )
+
+
+            //     <fieldset>
+            //     <div className="form-group">
+            //         <label htmlFor="name">Maverick:</label>
+            //         <input type="radio"
+            //             value="1"
+            //             onChange={
+            //                 (evt) => {
+            //                     const copy = {...activity}
+            //                     copy.kidId = parseInt(evt.target.value)
+            //                     addActivity(copy)
+            //                 }
+            //             } />
+            //         <label htmlFor="name">Adaline:</label>
+            //         <input type="checkbox"
+            //             value= "2"
+            //             onChange={
+            //                 (evt) => {
+            //                     const copy = {...activity}
+            //                     copy.kidId = parseInt(evt.target.value)
+            //                     addActivity(copy)
+            //                 }
+            //             } />
+            //     </div>
+            // </fieldset>
+
+
+                // return (
+                //       <div className="radio">
+                //         <label>
+                //           <input
+                //             type="radio"
+                //             value="Male"
+                //             checked={this.state.selectedOption === "Male"}
+                //             onChange={this.onValueChange}
+                //           />
+                //           Male
+                //         </label>
+                //       </div>
+                //       <div className="radio">
+                //         <label>
+                //           <input
+                //             type="radio"
+                //             value="Female"
+                //             checked={this.state.selectedOption === "Female"}
+                //             onChange={this.onValueChange}
+                //           />
+                //           Female
+                //         </label>
+                //       </div>
+                //       <div className="radio">
+                //         <label>
+                //           <input
+                //             type="radio"
+                //             value="Other"
+                //             checked={this.state.selectedOption === "Other"}
+                //             onChange={this.onValueChange}
+                //           />
+                //           Other
+                //         </label>
+                //       </div>
+                //       <div>
+                //         Selected option is : {this.state.selectedOption}
+                //       </div>
+                //       <button className="btn btn-default" type="submit">
+                //         Submit
+                //       </button>
+                //   )

@@ -3,22 +3,25 @@ import { useNavigate } from "react-router-dom"
 
 export const UpdateProfileForm = () => {
     // TODO: Provide initial state for profile
+
+    const localRainbowUser = localStorage.getItem("rainbow_user")
+    const rainbowUserObject = JSON.parse(localRainbowUser)
+
 const [profile, setProfile] = useState({
     fullName: "",
     address: "",
     phoneNumber: "",
     email: "",
-    userId: 0
+    id: rainbowUserObject.id
 })
 const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
 
-const localRainbowUser = localStorage.getItem("rainbow_user")
-    const rainbowUserObject = JSON.parse(localRainbowUser)
+
 
     // TODO: Get user profile info from API and update state
 useEffect(() => {
-    fetch(`http://localhost:8088/users?userId=${rainbowUserObject.id}`)
+    fetch(`http://localhost:8088/users?id=${rainbowUserObject.id}`)
     .then(response => response.json())
     .then((data) => {
         const userObject = data[0]
