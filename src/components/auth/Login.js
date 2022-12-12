@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
@@ -19,7 +19,7 @@ export const Login = () => {
                         id: user.id,
                     }))
 
-                    navigate("/")
+                    navigate("/dash")
                 }
                 else {
                     window.alert("Invalid login - Please register below.")
@@ -32,7 +32,7 @@ export const Login = () => {
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
                     <h1>Over the Rainbow</h1>
-                    <h2>Keep your co-parenting skies blue</h2>
+                    <h2>Keeping your co-parenting skies blue since 2022</h2>
                     <h3>Please sign in</h3>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>

@@ -1,0 +1,39 @@
+.activities-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 20px;
+    
+}
+
+.kid-name{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.activity-card{
+    border: 2px solid black;
+    padding: 10px;
+}
+
+.kid1-activities{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-basis: start;
+    color:blue;
+}
+
+.kid2-activities{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    flex-basis: end;
+    color:purple;
+}
