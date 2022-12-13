@@ -19,7 +19,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Patua One", serif;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 30px;
+  /* font-family: "Patua One", serif; */
   letter-spacing: 2px;
 }
 
@@ -32,6 +34,13 @@ p {
 }
 
 body{
-    background-image: url("https://img.freepik.com/premium-photo/brown-cardboard-texture-blank-page-as-background_94046-3477.jpg?w=2000");
+  /* background-image: url("./OTR-background.png"); */
+  background-image: url("./Boho-Mountain.png");
+  /* background-color: rgb(195, 177, 155); */
+  /* background-image: url("https://t3.ftcdn.net/jpg/05/11/21/72/360_F_511217290_MxxZrZf2lZviHTQD0uXExakreN7BLUev.jpg"); */
+  background-size: 100%;
+  background-repeat: no-repeat;
+  /* background-image: url("https://www.creativefabrica.com/wp-content/uploads/2021/09/19/Hand-drawn-boho-background-vector-Graphics-17519845-1-580x386.png"); */
+    /* background-image: url("https://img.freepik.com/premium-photo/brown-cardboard-texture-blank-page-as-background_94046-3477.jpg?w=2000"); */
 }
 

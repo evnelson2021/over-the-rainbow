@@ -3,8 +3,11 @@ a:hover { text-decoration: none; color:teal; }
 
 .navbar {
     background-image: url("./NavImg.png");
+    /* background-size: cover;
+    width: 100%; */
     display: flex;
     flex-wrap: nowrap;
+    background-repeat: no-repeat;
     /* justify-content: left; */
     height: 175px;
     margin: 0;
@@ -49,6 +52,8 @@ a:hover { text-decoration: none; color:teal; }
     margin-top: 650px;
     padding: 125px;
     border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px gray;
 }
 
 .schedule__link{
@@ -57,4 +62,6 @@ a:hover { text-decoration: none; color:teal; }
     font-size: x-large;
     padding: 125px;
     border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px gray;
 }
