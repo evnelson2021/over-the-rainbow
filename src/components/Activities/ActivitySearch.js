@@ -1,7 +1,9 @@
+import "./Activities.css"
+
 export const ActivitySearch = ({ setterFunction }) => {
     return(
         <div>
-            <input 
+            <input className="search-box"
                 onChange={
                     (changeEvent) => {
                         setterFunction(changeEvent.target.value)

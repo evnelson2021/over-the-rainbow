@@ -1,0 +1,36 @@
+a:visited {text-decoration: none; color: rgb(80, 62, 62); }
+a:hover { text-decoration: none; color:teal; }
+
+.Activities__item{
+    margin-top: 150px;
+    list-style-type: none;
+    /* justify-content: space-evenly */
+}
+
+.Schedules__item{
+    margin-top: 150px;
+    list-style-type: none;
+}
+
+.activity__link{
+    background-color: blanchedalmond;
+    /* background-image: url("./NavImg.png"); */
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 35px;
+    margin-top: 650px;
+    padding: 125px;
+    border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px gray;
+}
+
+.schedule__link{
+    background-color: blanchedalmond;
+    /* background-image: url("./NavImg.png"); */
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 35px;
+    padding: 125px;
+    border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px gray;
+}

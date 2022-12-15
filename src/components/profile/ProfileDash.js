@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-
+import "./Dash.css"
 
 export const Dashboard = () => {
     const navigate = useNavigate()
@@ -22,4 +22,3 @@ export const Dashboard = () => {
         </ol>
 )
 }
-

@@ -72,8 +72,8 @@ const {activityId} = useParams()
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <form className="activity">
-            <h2 className="activityEdit__title">Update Activity Information</h2>
+        <form className="activityEditForm">
+            <h2 className="activityEdit__title">Edit Activity Information</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Activity Name:</label>
@@ -188,32 +188,19 @@ const {activityId} = useParams()
                                 setActivity(copy)
                             }
                         } />
+                    {/* <label htmlFor="name">Both:</label>
+                    <input type="radio"
+                        name="kid"
+                        value= "3"
+                        onClick={
+                            (click) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(click.target.value)
+                                setActivity(copy)
+                            }
+                        } /> */}
                 </div>
             </fieldset>
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="name">Maverick:</label>
-                    <input type="checkbox"
-                        defaultValue= "1"
-                        onChange={
-                            (evt) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(evt.target.defaultValue)
-                                setActivity(copy)
-                            }
-                        } />
-                        <label htmlFor="name">Adaline:</label>
-                        <input type="checkbox"
-                        defaultValue= "2"
-                        onChange={
-                            (evt) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(evt.target.defaultValue)
-                                setActivity(copy)
-                            }
-                        } />
-                </div>
-            </fieldset> */}
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">

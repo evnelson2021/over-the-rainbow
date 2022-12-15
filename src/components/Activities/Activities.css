@@ -1,24 +1,60 @@
+.top-of-activities{
+    text-align: center;
+}
+
+.activity-name{
+    margin: 0;
+    margin-bottom: 0;
+}
+
+.add_button{
+    margin: 0;
+    text-align: center;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 25px;
+}
+
+.activities-title{
+    font-size: 50px;
+    margin: 0;
+    text-align: center;
+}
+
 .activities-container{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
+    /* margin-top: 30px; */
     /* padding: 10px;
     margin-top: 10px; */
 }
 
+/* .kid1-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.kid2-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+} */
+
 .kid-name{
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 40px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
-    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .activity-card{
-    /* display: flex;
-    flex-direction: row; */
     margin: 10px;
     border: 2px solid black;
     padding: 10px;
@@ -26,27 +62,50 @@
     border: dotted black 1px;
     border-radius: 1rem;
     box-shadow: 4px 3px 4px gray;
-    width: 300px;
+    width: 500px;
 }
 
 .kid1-activities{
     /* display: flex;
-    flex-direction: column; */
-    /* display: flex;
-    flex-direction: column; */
-    /* flex-wrap: wrap; */
+    flex-direction: row;
+    flex-wrap: wrap; */
     /* align-items: flex-start; */
     /* flex-basis: start; */
-    color:blue;
+    display: inline-block;
+    color:#74A4A6;
 }
 
 .kid2-activities{
     /* display: flex;
     flex-direction: column; */
-    /* display: flex;
-    flex-direction: column; */
     /* flex-wrap: wrap; */
     /* align-items: flex-end; */
     /* flex-basis: end; */
-    color:purple;
+    display: inline-block;
+    color:#CF7C53;
+}
+
+.search-box{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 20px;
+}
+
+.card-buttons{
+    text-align: center;
+}
+
+.activityForm{
+    margin: 30px;
+    padding-left: 30px;
+}
+
+.form-group{
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 24px;
+}
+.activityEditForm{
+    margin: 30px;
+    padding-left: 30px;
 }

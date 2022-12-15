@@ -21,6 +21,26 @@ export const AddActivityForm = () => {
         userId: rainbowUserObject.id
     })
 
+    // const [activityItem, addTwoActivities] = useState({
+    //     name: "",
+    //     location: "",
+    //     date: "",
+    //     startTime: "",
+    //     endTime: "",
+    //     kidId: 1,
+    //     userId: rainbowUserObject.id
+    // },
+    // {
+    //     name: "",
+    //     location: "",
+    //     date: "",
+    //     startTime: "",
+    //     endTime: "",
+    //     kidId: 2,
+    //     userId: rainbowUserObject.id
+    // }
+    // )
+
     const [feedback, setFeedback] = useState("")
 
     // const [kids, setKids] = useState([])
@@ -64,6 +84,7 @@ export const AddActivityForm = () => {
             userId: rainbowUserObject.id
         } 
 
+        
         // TODO: Perform the fetch() to POST the object to the API
         if (
             activity.name &&
@@ -72,7 +93,7 @@ export const AddActivityForm = () => {
             activity.startTime &&
             activity.endTime &&
             activity.kidId
-          ) {
+        ) {
         return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
             method: "POST",
             headers: {
@@ -89,7 +110,7 @@ export const AddActivityForm = () => {
             })
         } else {
             alert('Please complete the form')
-          }
+        }
     }
 
     // HandlebothkidsSave button that creates two separate activities with kidId 1 and 2 run POST twice
@@ -188,31 +209,6 @@ export const AddActivityForm = () => {
                         } />
                 </div>
             </fieldset>
-            {/* <fieldset>
-                <div className="form-group">
-                    <label htmlFor="name">Maverick:</label>
-                    <input type="checkbox"
-                        value="1"
-                        onChange={
-                            (evt) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(evt.target.value)
-                                addActivity(copy)
-                            }
-                        } />
-                    <label htmlFor="name">Adaline:</label>
-                    <input type="checkbox"
-                        value= "2"
-                        onChange={
-                            (evt) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(evt.target.value)
-                                addActivity(copy)
-                            }
-                        } />
-                </div>
-            </fieldset> */}
-
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Maverick:</label>
@@ -237,6 +233,17 @@ export const AddActivityForm = () => {
                                 addActivity(copy)
                             }
                         } />
+                        {/* <label htmlFor="name">Both:</label> */}
+                        {/* <input type="radio"
+                        name="kid"
+                        value= "3"
+                        onClick={
+                            (click) => {
+                                const copy = {...activity}
+                                copy.kidId = parseInt(click.target.value)
+                                setActivity(copy)
+                            }
+                        } /> */}
                 </div>
             </fieldset>
             <button 
