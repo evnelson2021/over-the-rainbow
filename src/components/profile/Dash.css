@@ -14,9 +14,8 @@ a:hover { text-decoration: none; color:teal; }
 
 .activity__link{
     background-color: blanchedalmond;
-    /* background-image: url("./NavImg.png"); */
     font-family: 'Coming Soon', cursive;
-    font-size: 35px;
+    font-size: 25px;
     margin-top: 650px;
     padding: 125px;
     border: dotted black 1px;
@@ -26,9 +25,8 @@ a:hover { text-decoration: none; color:teal; }
 
 .schedule__link{
     background-color: blanchedalmond;
-    /* background-image: url("./NavImg.png"); */
     font-family: 'Coming Soon', cursive;
-    font-size: 35px;
+    font-size: 25px;
     padding: 125px;
     border: dotted black 1px;
     border-radius: 1rem;
@@ -39,6 +37,11 @@ a:hover { text-decoration: none; color:teal; }
     margin: 30px;
     padding-left: 30px;
     align-content: center;
+}
+
+.welcome{
+  margin-top: 30px;
+  font-size: 30px;
 }
 
 .feedback{

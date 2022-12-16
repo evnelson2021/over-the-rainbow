@@ -77,11 +77,11 @@ export const AddScheduleForm = () => {
             <h2 className="scheduleForm__title">New Schedule Change</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Start Date:</label>
+                    <label className="sched-text" htmlFor="date">Start Date:</label>
                     <input
                         required autoFocus
                         type="date"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="Date of Schedule"
                         value={schedule.startDate} 
                         onChange={
@@ -97,11 +97,11 @@ export const AddScheduleForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">End Date:</label>
+                    <label className="sched-text" htmlFor="date">End Date:</label>
                     <input
                         required autoFocus
                         type="date"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="Date of Schedule"
                         value={schedule.endDate} 
                         onChange={
@@ -115,11 +115,11 @@ export const AddScheduleForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="start-time">Start Time:</label>
+                    <label className="sched-text" htmlFor="start-time">Start Time:</label>
                     <input
                         required autoFocus
                         type="time"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="Start Time"
                         value={schedule.startTime}
                         onChange={
@@ -131,11 +131,11 @@ export const AddScheduleForm = () => {
                         } />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="end-time">End Time:</label>
+                    <label className="sched-text" htmlFor="end-time">End Time:</label>
                     <input
                         required autoFocus
                         type="time"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="End Time"
                         value={schedule.endTime}
                         onChange={
@@ -149,7 +149,7 @@ export const AddScheduleForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="notes">Schedule Notes:</label>
+                    <label className="sched-text" htmlFor="notes">Schedule Notes:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -165,13 +165,13 @@ export const AddScheduleForm = () => {
                         } />
                 </div>
             </fieldset>
-                    {/* <label htmlFor="kidId">Kid(s)</label><br></br>
+                    {/* <label className="sched-text" htmlFor="kidId">Kid(s)</label><br></br>
                     <select>
                         <option 
                         required autoFocus
                         type="checkbox" 
                         id="kidId" 
-                        className="form-control"
+                        className="sched-control"
                         value={schedule.kidId}
                         onChange={
                             (evt)=> {
@@ -182,9 +182,9 @@ export const AddScheduleForm = () => {
                         }/>
                     </select> */}
 
-            {/* <label htmlFor="kids">Kids</label><br></br> 
+            {/* <label className="sched-text" htmlFor="kids">Kids</label><br></br> 
             <select onChange={setKids}>
-                <option value={0} type="select" id="kidId" className="form-control" required></option>
+                <option value={0} type="select" id="kidId" className="sched-control" required></option>
                 {
                 kids.map ( (kid) => {
                 return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
@@ -192,7 +192,7 @@ export const AddScheduleForm = () => {
 
             <button 
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
-            className="btn btn-primary">
+            className="save-button">
                 Submit Schedule Change
             </button>
         </form>

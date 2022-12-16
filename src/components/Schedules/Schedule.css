@@ -9,10 +9,11 @@
     text-align: center;
 }
 .schedule-container{
-    /* display: flex;
-    flex-direction: row;
-    justify-content: space-evenly; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 30px;
+    text-align: center;
 }
 
 .schedule-title{
@@ -39,9 +40,10 @@
 
 .all-sched-cards{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     align-content: center;
+    text-align: center;
 }
 
 .schedule-card{
@@ -55,7 +57,8 @@
     border-radius: 1rem;
     box-shadow: 4px 3px 4px #603E3E;
     width: 500px;
-    text-align: center;
+    /* text-align: center; */
+    /* text-align: center; */
 }
 
 .sched-text{
@@ -65,6 +68,7 @@
 
 .sched-control{
     font-size: 20px;
+    width: 350px;
 }
 
 .save-button{

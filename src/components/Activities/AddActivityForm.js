@@ -121,11 +121,11 @@ export const AddActivityForm = () => {
             <h2 className="activityForm__title">New Activity</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Activity Name:</label>
+                    <label className="act-text" htmlFor="name">Activity Name:</label>
                     <input
-                        required autoFocus
+                        required
                         type="text"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Name of Activity"
                         value={activity.name}
                         onChange={
@@ -139,11 +139,11 @@ export const AddActivityForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="location">Activity Location:</label>
+                    <label className="act-text" htmlFor="location">Activity Location:</label>
                     <input
-                        required autoFocus
+                        required
                         type="text"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Location of Activity"
                         value={activity.location}
                         onChange={
@@ -157,11 +157,11 @@ export const AddActivityForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Activity Date:</label>
+                    <label className="act-text" htmlFor="date">Activity Date:</label>
                     <input
-                        required autoFocus
+                        required
                         type="date"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Date of Activity"
                         value={activity.date} 
                         onChange={
@@ -177,11 +177,11 @@ export const AddActivityForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="start-time">Activity Start Time:</label>
+                    <label className="act-text" htmlFor="start-time">Activity Start Time:</label>
                     <input
-                        required autoFocus
+                        required
                         type="time"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Start Time"
                         value={activity.startTime}
                         onChange={
@@ -192,12 +192,14 @@ export const AddActivityForm = () => {
                             }
                         } />
                 </div>
+            </fieldset>
+            <fieldset>
                 <div className="form-group">
-                    <label htmlFor="end-time">Activity End Time:</label>
+                    <label className="act-text" htmlFor="end-time">Activity End Time:</label>
                     <input
-                        required autoFocus
+                        required
                         type="time"
-                        className="form-control"
+                        className="act-control"
                         placeholder="End Time"
                         value={activity.endTime}
                         onChange={
@@ -211,7 +213,7 @@ export const AddActivityForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Maverick:</label>
+                    <label className="act-text" htmlFor="name">Maverick:</label>
                     <input type="radio"
                         name="kid"
                         value="1"
@@ -222,7 +224,7 @@ export const AddActivityForm = () => {
                                 addActivity(copy)
                             }
                         } />
-                    <label htmlFor="name">Adaline:</label>
+                    <label className="act-text" htmlFor="name">Adaline:</label>
                     <input type="radio"
                         name="kid"
                         value= "2"
@@ -233,7 +235,7 @@ export const AddActivityForm = () => {
                                 addActivity(copy)
                             }
                         } />
-                        {/* <label htmlFor="name">Both:</label> */}
+                        {/* <label className="act-text" htmlFor="name">Both:</label> */}
                         {/* <input type="radio"
                         name="kid"
                         value= "3"
@@ -248,7 +250,7 @@ export const AddActivityForm = () => {
             </fieldset>
             <button 
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
-            className="btn btn-primary">
+            className="save-button">
                 Submit Activity
             </button>
         </form>
@@ -257,13 +259,13 @@ export const AddActivityForm = () => {
 
 
 // JUST PUTTING THIS HERE FOR LATER - MAKING A DROPDOWN - will need "Both" option with an id of 3 to add to both activity lists
-{/* <label htmlFor="kidId">Kid(s)</label><br></br>
+{/* <label className="act-text" htmlFor="kidId">Kid(s)</label><br></br>
                     <select>
                         <option 
                         required autoFocus
                         type="checkbox" 
                         id="kidId" 
-                        className="form-control"
+                        className="act-control"
                         value={activity.kidId}
                         onChange={
                             (evt)=> {
@@ -274,9 +276,9 @@ export const AddActivityForm = () => {
                         }/>
                     </select> */}
 
-            {/* <label htmlFor="kids">Kids</label><br></br> 
+            {/* <label className="act-text" htmlFor="kids">Kids</label><br></br> 
             <select onChange={setKids}>
-                <option value={0} type="select" id="kidId" className="form-control" required></option>
+                <option value={0} type="select" id="kidId" className="act-control" required></option>
                 {
                 kids.map ( (kid) => {
                 return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
@@ -294,7 +296,7 @@ export const AddActivityForm = () => {
 
             //     <fieldset>
             //     <div className="form-group">
-            //         <label htmlFor="name">Maverick:</label>
+            //         <label className="act-text" htmlFor="name">Maverick:</label>
             //         <input type="radio"
             //             value="1"
             //             onChange={
@@ -304,7 +306,7 @@ export const AddActivityForm = () => {
             //                     addActivity(copy)
             //                 }
             //             } />
-            //         <label htmlFor="name">Adaline:</label>
+            //         <label className="act-text" htmlFor="name">Adaline:</label>
             //         <input type="checkbox"
             //             value= "2"
             //             onChange={

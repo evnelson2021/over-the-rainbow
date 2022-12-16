@@ -14,9 +14,15 @@ p{
 .add_button{
     margin: 0;
     text-align: center;
-    /* font-family: 'Coming Soon', cursive; */
     font-family: 'Coming Soon', cursive;
     font-size: 20px;
+}
+
+.save-button{
+    text-align: center;
+    margin-left: 70%;
+    margin-top: -20px;
+    margin-bottom: 15px;
 }
 
 .activities-title{
@@ -30,24 +36,7 @@ p{
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    /* margin-top: 30px; */
-    /* padding: 10px;
-    margin-top: 10px; */
 }
-
-/* .kid1-list{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.kid2-list{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-} */
 
 .kid-name{
     font-family: 'Coming Soon', cursive;
@@ -114,6 +103,17 @@ p{
     margin: 30px;
     padding-left: 30px;
 }
+
+.act-control{
+    font-size: 20px;
+    width: 550px;
+}
+
+.act-text{
+    font-size: 24px;
+    padding: 10px;
+}
+
 .feedback{
     border: 2px dotted teal;
     padding: 1rem;

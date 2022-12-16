@@ -12,7 +12,7 @@ export const ShowSchedListLogoutNav = () => {
     return (
         <ul className="navStyle">
             <li className="navbar__item navbar__logout">
-                <Link className="navbar__link" to="/schedule">Back to Parenting Schedule</Link>
+                <Link className="navbar__link" to="/schedule">Back to Schedule</Link>
             </li>
             {
                 localStorage.getItem("rainbow_user")

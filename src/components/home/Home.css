@@ -1,0 +1,28 @@
+.future-page{
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.backstory{
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.work-in-progress{
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    width: 400px;
+    background: url("../../../public/Progress.png") center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    align-content: center;
+    align-items: center;
+    margin-left: 35%;
+}

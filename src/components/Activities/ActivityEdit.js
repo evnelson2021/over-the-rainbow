@@ -76,10 +76,10 @@ const {activityId} = useParams()
             <h2 className="activityEdit__title">Edit Activity Information</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Activity Name:</label>
+                    <label className="act-text" htmlFor="name">Activity Name:</label>
                     <input
                         type="text"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Name of Activity"
                         defaultValue={activity?.name}
                         onChange={
@@ -93,10 +93,10 @@ const {activityId} = useParams()
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="location">Activity Location:</label>
+                    <label className="act-text" htmlFor="location">Activity Location:</label>
                     <input
                         type="text"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Location of Activity"
                         defaultValue={activity?.location}
                         onChange={
@@ -110,10 +110,10 @@ const {activityId} = useParams()
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Activity Date:</label>
+                    <label className="act-text" htmlFor="date">Activity Date:</label>
                     <input
                         type="date"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Date of Activity"
                         defaultValue={activity?.date} 
                         onChange={
@@ -129,10 +129,10 @@ const {activityId} = useParams()
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="start-time">Activity Start Time:</label>
+                    <label className="act-text" htmlFor="start-time">Activity Start Time:</label>
                     <input
                         type="time"
-                        className="form-control"
+                        className="act-control"
                         placeholder="Start Time"
                         defaultValue={activity?.startTime}
                         onChange={
@@ -143,11 +143,13 @@ const {activityId} = useParams()
                             }
                         } />
                 </div>
+            </fieldset>
+            <fieldset>
                 <div className="form-group">
-                    <label htmlFor="end-time">Activity End Time:</label>
+                    <label className="act-text" htmlFor="end-time">Activity End Time:</label>
                     <input
                         type="time"
-                        className="form-control"
+                        className="act-control"
                         placeholder="End Time"
                         defaultValue={activity?.endTime}
                         onChange={
@@ -161,7 +163,7 @@ const {activityId} = useParams()
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Maverick:</label>
+                    <label className="act-text" htmlFor="name">Maverick:</label>
                     <input type="radio"
                         name="kid"
                         checked={activity.kidId === 1}
@@ -173,7 +175,7 @@ const {activityId} = useParams()
                                 setActivity(copy)
                             }
                         } />
-                    <label htmlFor="name">Adaline:</label>
+                    <label className="act-text" htmlFor="name">Adaline:</label>
                     <input type="radio"
                         name="kid"
                         checked={activity.kidId === 2}
@@ -200,7 +202,7 @@ const {activityId} = useParams()
             </fieldset>
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-primary">
+                className="save-button">
                 Save Activity
             </button>
         </form>
@@ -216,7 +218,7 @@ const {activityId} = useParams()
                         required autoFocus
                         type="checkbox" 
                         id="kidId" 
-                        className="form-control"
+                        className="act-control"
                         defaultValue={activity.kidId}
                         onChange={
                             (evt)=> {
@@ -229,7 +231,7 @@ const {activityId} = useParams()
 
             {/* <label htmlFor="kids">Kids</label><br></br> 
             <select onChange={setKids}>
-                <option defaultValue={0} type="select" id="kidId" className="form-control" required></option>
+                <option defaultValue={0} type="select" id="kidId" className="act-control" required></option>
                 {
                 kids.map ((kid) => {
                 return <option key-"kidId--{kid.id}" defaultValue={kid.id}>{kid.name}</option>
