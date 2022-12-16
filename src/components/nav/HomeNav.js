@@ -5,7 +5,7 @@ export const HomeNav = () => {
     // const navigate = useNavigate()
 
     return (
-        <ul className="navbar">
+        <ul className="navStyle">
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/login">Login</Link>
             </li>

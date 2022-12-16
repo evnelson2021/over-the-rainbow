@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import "./Schedule.css"
 
 export const ScheduleEditForm = () => {
     // TODO: Provide initial state for schedule
@@ -67,11 +68,11 @@ useEffect(() => {
             <h2 className="schedule__title">Update Schedule Information</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">Start Date:</label>
+                    <label className="sched-text" htmlFor="date">Start Date:</label>
                     <input
-                        required autoFocus
+                        required
                         type="date"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="Date of Schedule"
                         defaultValue={schedule.startDate} 
                         onChange={
@@ -85,11 +86,11 @@ useEffect(() => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="date">End Date:</label>
+                    <label className="sched-text" htmlFor="date">End Date:</label>
                     <input
-                        required autoFocus
+                        required
                         type="date"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="Date of Schedule"
                         value={schedule.endDate} 
                         onChange={
@@ -103,11 +104,11 @@ useEffect(() => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="start-time">Start Time:</label>
+                    <label className="sched-text" htmlFor="start-time">Start Time:</label>
                     <input
-                        required autoFocus
+                        required
                         type="time"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="Start Time"
                         value={schedule.startTime}
                         onChange={
@@ -118,12 +119,14 @@ useEffect(() => {
                             }
                         } />
                 </div>
+                </fieldset>
+                <fieldset>
                 <div className="form-group">
-                    <label htmlFor="end-time">End Time:</label>
+                    <label className="sched-text" htmlFor="end-time">End Time:</label>
                     <input
-                        required autoFocus
+                        required
                         type="time"
-                        className="form-control"
+                        className="sched-control"
                         placeholder="End Time"
                         value={schedule.endTime}
                         onChange={
@@ -134,12 +137,12 @@ useEffect(() => {
                             }
                         } />
                 </div>
-            </fieldset>
+                </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="notes">Schedule Notes:</label>
+                    <label className="sched-text" htmlFor="notes">Schedule Notes:</label>
                     <input
-                        required autoFocus
+                        required
                         type="text"
                         className="notes-box"
                         placeholder="Explanation of schedule change or travel"
@@ -155,7 +158,7 @@ useEffect(() => {
             </fieldset>
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-primary">
+                className="save-button">
                 Save Schedule
             </button>
         </form>

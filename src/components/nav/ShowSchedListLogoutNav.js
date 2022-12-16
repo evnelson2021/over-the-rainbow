@@ -10,7 +10,7 @@ export const ShowSchedListLogoutNav = () => {
     
 
     return (
-        <ul className="navbar">
+        <ul className="navStyle">
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="/schedule">Back to Parenting Schedule</Link>
             </li>

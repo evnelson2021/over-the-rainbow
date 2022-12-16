@@ -2,9 +2,6 @@ import { useState, useEffect } from "react"
 import { Navigate, useNavigate } from "react-router-dom"
 import "./Activities.css"
 
-
-// export const ActivityList = ( {searchTermState} ) => {
-
   const localRainbowUser = localStorage.getItem("rainbow_user")
   const rainbowUserObject = JSON.parse(localRainbowUser)
 
@@ -27,13 +24,20 @@ export const ActivityList = ( { searchTermState } ) => {
         [ searchTermState ]
     )
 
+    useEffect(
+      () => {
+          setFiltered(activities)
+      },
+      [activities]
+  )
+
 
   // Use Effect watches for state change
   // It takes two arguments, a function and an array
   // The array is which states we want to observe
   // The function is what we want to do when that observed state changes
   useEffect(() => {
-    fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`)
+    fetch(`http://localhost:8088/activities?_expand=kid&_expand=user&_sort=date`)
       .then((res) => res.json())
       .then((activitiesArray) => {
         setActivities(activitiesArray)
@@ -41,7 +45,7 @@ export const ActivityList = ( { searchTermState } ) => {
   }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
 
   const getAllActivities = () => {
-    fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`)
+    fetch(`http://localhost:8088/activities?_expand=kid&_expand=user&_sort=date`)
       .then((res) => res.json())
       .then((activitiesArray) => {
         setActivities(activitiesArray)
@@ -79,8 +83,8 @@ export const ActivityList = ( { searchTermState } ) => {
   return (
     <>
     <div className="top-of-activities">
-    <button className="add_button" onClick={() => navigate("/activities/add-activity")}>New Activity</button>
-    <h1 className="activities-title">Activities</h1>
+      <h1 className="activities-title">Activities</h1>
+      <button className="add_button" onClick={() => navigate("/activities/add-activity")}>New Activity</button>
     </div>
 
     <div className="kid-name">
@@ -90,7 +94,7 @@ export const ActivityList = ( { searchTermState } ) => {
     
     <div className="activities-container">
       <div className="kid1-list">
-      {activities.map((activityObj) => {
+      {filteredActivities.map((activityObj) => {
         if (activityObj.kidId === 1)
         return (
           <div className="activity-card" key={activityObj.id}>
@@ -122,7 +126,7 @@ export const ActivityList = ( { searchTermState } ) => {
       </div>
     
       <div className="kid2-list">
-      {activities.map((activityObj) => {
+      {filteredActivities.map((activityObj) => {
         if (activityObj.kidId === 2)
         return (
           <div className="activity-card" key={activityObj.id}>

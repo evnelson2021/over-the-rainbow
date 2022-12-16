@@ -78,7 +78,6 @@ const {activityId} = useParams()
                 <div className="form-group">
                     <label htmlFor="name">Activity Name:</label>
                     <input
-                        required autoFocus
                         type="text"
                         className="form-control"
                         placeholder="Name of Activity"
@@ -96,7 +95,6 @@ const {activityId} = useParams()
                 <div className="form-group">
                     <label htmlFor="location">Activity Location:</label>
                     <input
-                        required autoFocus
                         type="text"
                         className="form-control"
                         placeholder="Location of Activity"
@@ -114,7 +112,6 @@ const {activityId} = useParams()
                 <div className="form-group">
                     <label htmlFor="date">Activity Date:</label>
                     <input
-                        required autoFocus
                         type="date"
                         className="form-control"
                         placeholder="Date of Activity"
@@ -134,7 +131,6 @@ const {activityId} = useParams()
                 <div className="form-group">
                     <label htmlFor="start-time">Activity Start Time:</label>
                     <input
-                        required autoFocus
                         type="time"
                         className="form-control"
                         placeholder="Start Time"
@@ -150,7 +146,6 @@ const {activityId} = useParams()
                 <div className="form-group">
                     <label htmlFor="end-time">Activity End Time:</label>
                     <input
-                        required autoFocus
                         type="time"
                         className="form-control"
                         placeholder="End Time"
@@ -169,6 +164,7 @@ const {activityId} = useParams()
                     <label htmlFor="name">Maverick:</label>
                     <input type="radio"
                         name="kid"
+                        checked={activity.kidId === 1}
                         value="1"
                         onClick={
                             (click) => {
@@ -180,7 +176,8 @@ const {activityId} = useParams()
                     <label htmlFor="name">Adaline:</label>
                     <input type="radio"
                         name="kid"
-                        value= "2"
+                        checked={activity.kidId === 2}
+                        value="2"
                         onClick={
                             (click) => {
                                 const copy = {...activity}

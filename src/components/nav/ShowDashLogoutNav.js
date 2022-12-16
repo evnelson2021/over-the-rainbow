@@ -9,7 +9,7 @@ export const ShowDashLogoutNav = () => {
     }
 
     return (
-        <ul className="navbar">
+        <ul className="navStyle">
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="/dash">Dashboard</Link>
             </li>

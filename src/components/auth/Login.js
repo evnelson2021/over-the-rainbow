@@ -2,6 +2,7 @@ import React, { useState } from "react"
 // import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
+// import "../nav/NavBar.css"
 
 export const Login = () => {
     const [email, set] = useState("emilynelson@gmail.com")
@@ -31,8 +32,7 @@ export const Login = () => {
         <main className="container--login">
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Over the Rainbow</h1>
-                    <h2>Keeping your co-parenting skies blue since 2022</h2>
+                    <div className="login-details">
                     <h3>Please sign in</h3>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
@@ -48,6 +48,7 @@ export const Login = () => {
                             Sign in
                         </button>
                     </fieldset>
+                    </div>
                 </form>
             </section>
             {/* <section className="link--register">

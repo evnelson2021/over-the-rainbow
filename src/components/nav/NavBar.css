@@ -1,30 +1,37 @@
-a:visited {text-decoration: none; color: rgb(80, 62, 62); }
+a:visited {text-decoration: none; color: #603E3E; }
 a:hover { text-decoration: none; color:teal; }
 
-.navbar {
-    background-image: url("./NavImg.png");
+.navStyle {
+    background-image: url("../../../public/NavPic.png");
     background-size: cover;
     display: flex;
     flex-wrap: nowrap;
+    justify-content: flex-end;
     background-repeat: no-repeat;
     /* justify-content: left; */
     height: 175px;
     margin: 0;
+    padding: 0;
+}
+
+.logo-img{
+    margin: 0;
+    margin-top: 30px;
+    height: 175px;
+    margin-right: 925px;
 }
 
 .navbar__item {
-    /* flex-basis: 20%; */
+    flex-basis: 10%;
     list-style-type: none;
-
 }
 
 .navbar__link{
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Coming Soon', cursive;
     font-size: 25px;
 }
 
 .navbar__logout {
-    margin-left: auto;
     margin-right: 10px;;
 }
 

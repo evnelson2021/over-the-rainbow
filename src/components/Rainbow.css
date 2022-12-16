@@ -7,26 +7,26 @@ body,
 input,
 select,
 textarea {
-  color: #404040;
-  font-family: 'Nanum Pen Script', cursive;
+  color: #603E3E;
+  font-family: 'Coming Soon', cursive;
   font-size: 14px;
   line-height: 1.5;
 }
 
+
 button{
-  color: #404040;
-  font-family: 'Nanum Pen Script', cursive;
-  font-size: 18px;
+  color: #603E3E;
+  font-family: 'Coming Soon', cursive;
+  font-size: 14px;
   line-height: 1.5;
   text-align: center;
   margin: 5px;
   border-radius: 1rem;
-  box-shadow: 4px 3px 4px gray;
+  box-shadow: 4px 3px 4px #603E3E;
 }
 
 body{
-    /* padding: 0 1rem; */
-    background: url("./Boho-Mountain.png") no-repeat center center fixed; 
+    background: url("../../public/Boho-Mountain.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -34,8 +34,9 @@ body{
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Nanum Pen Script', cursive;
-  font-size: 30px;
+  text-shadow: 1px .5px 1px #603E3E;
+  font-family: 'Coming Soon', cursive;
+  font-size: 20px;
   margin-top: 0;
   margin-bottom: 0;
   /* font-family: "Patua One", serif; */

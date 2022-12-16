@@ -1,3 +1,7 @@
+p{
+    margin: 10px;
+}
+
 .top-of-activities{
     text-align: center;
 }
@@ -10,12 +14,13 @@
 .add_button{
     margin: 0;
     text-align: center;
-    font-family: 'Nanum Pen Script', cursive;
-    font-size: 25px;
+    /* font-family: 'Coming Soon', cursive; */
+    font-family: 'Coming Soon', cursive;
+    font-size: 20px;
 }
 
 .activities-title{
-    font-size: 50px;
+    font-size: 40px;
     margin: 0;
     text-align: center;
 }
@@ -45,8 +50,8 @@
 } */
 
 .kid-name{
-    font-family: 'Nanum Pen Script', cursive;
-    font-size: 40px;
+    font-family: 'Coming Soon', cursive;
+    font-size: 35px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -61,7 +66,7 @@
     background-color: rgb(238, 220, 193);
     border: dotted black 1px;
     border-radius: 1rem;
-    box-shadow: 4px 3px 4px gray;
+    box-shadow: 4px 3px 4px #603E3E;
     width: 500px;
 }
 
@@ -72,7 +77,7 @@
     /* align-items: flex-start; */
     /* flex-basis: start; */
     display: inline-block;
-    color:#74A4A6;
+    color:teal;
 }
 
 .kid2-activities{
@@ -82,13 +87,13 @@
     /* align-items: flex-end; */
     /* flex-basis: end; */
     display: inline-block;
-    color:#CF7C53;
+    color:#9f532d;
 }
 
 .search-box{
     margin-top: 20px;
     margin-left: 20px;
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Coming Soon', cursive;
     font-size: 20px;
 }
 
@@ -102,10 +107,39 @@
 }
 
 .form-group{
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Coming Soon', cursive;
     font-size: 24px;
 }
 .activityEditForm{
     margin: 30px;
     padding-left: 30px;
+}
+.feedback{
+    border: 2px dotted teal;
+    padding: 1rem;
+    background-color: rgb(135, 188, 190);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    animation: 1s slideDown;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+display: block;
+}
+
+@keyframes slideDown {
+0% {
+    top: 20%;
+}
+
+100% {
+    top: 50%;
+}
 }

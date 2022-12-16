@@ -1,37 +1,105 @@
 .notes-box{
     margin: 30px;
-    width: 500px;
+    width: 400px;
     height: 200px;
     text-align: center;
 }
 
-/* 
+.top-of-schedules{
+    text-align: center;
+}
 .schedule-container{
-    display: flex;
+    /* display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    padding: 20px;
-    margin-top: 20px;
-    
+    justify-content: space-evenly; */
+    padding: 30px;
 }
 
-.schedule-name{
+.schedule-title{
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+.add_button{
+    margin: 0;
+    text-align: center;
+    font-family: 'Coming Soon', cursive;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* .schedule-name{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 20px;
     margin-top: 20px;
+} */
+
+.all-sched-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .schedule-card{
     border: 2px solid black;
     padding: 10px;
-} */
-
-/* .kid1-activities{
-    color:blue;
+    margin: 10px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: rgb(238, 220, 193);
+    border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    width: 500px;
+    text-align: center;
 }
 
-.kid2-activities{
-    color:purple;
-} */
+.sched-text{
+    font-size: 24px;
+    padding: 10px;
+}
+
+.sched-control{
+    font-size: 20px;
+}
+
+.save-button{
+    text-align: center;
+    margin-left: 70%;
+    margin-top: -20px;
+    margin-bottom: 15px;
+}
+
+.feedback{
+    border: 2px dotted teal;
+    padding: 1rem;
+    background-color: rgb(135, 188, 190);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    animation: 1s slideDown;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+display: block;
+}
+
+@keyframes slideDown {
+0% {
+    top: 20%;
+}
+
+100% {
+    top: 50%;
+}
+}

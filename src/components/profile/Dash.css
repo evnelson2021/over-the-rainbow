@@ -15,7 +15,7 @@ a:hover { text-decoration: none; color:teal; }
 .activity__link{
     background-color: blanchedalmond;
     /* background-image: url("./NavImg.png"); */
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Coming Soon', cursive;
     font-size: 35px;
     margin-top: 650px;
     padding: 125px;
@@ -27,10 +27,46 @@ a:hover { text-decoration: none; color:teal; }
 .schedule__link{
     background-color: blanchedalmond;
     /* background-image: url("./NavImg.png"); */
-    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Coming Soon', cursive;
     font-size: 35px;
     padding: 125px;
     border: dotted black 1px;
     border-radius: 1rem;
     box-shadow: 4px 3px 4px gray;
 }
+
+.profile-edit{
+    margin: 30px;
+    padding-left: 30px;
+    align-content: center;
+}
+
+.feedback{
+    border: 2px dotted teal;
+    padding: 1rem;
+    background-color: rgb(135, 188, 190);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    animation: 1s slideDown;
+}
+
+.invisible {
+    display: none;
+  }
+  
+  .visible {
+    display: block;
+  }
+
+  @keyframes slideDown {
+    0% {
+      top: 20%;
+    }
+  
+    100% {
+      top: 50%;
+    }
+  }

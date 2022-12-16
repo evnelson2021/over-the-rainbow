@@ -19,7 +19,7 @@ export const ScheduleList = ( ) => {
   // The function is what we want to do when that observed state changes
   useEffect(
     () => {
-    fetch(`http://localhost:8088/schedules?_expand=user`)
+    fetch(`http://localhost:8088/schedules?_expand=user&_sort=startDate`)
       .then((res) => res.json())
       .then((schedulesArray) => {
         setSchedules(schedulesArray)
@@ -27,7 +27,7 @@ export const ScheduleList = ( ) => {
   }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
 
   const getAllSchedules = () => {
-    fetch(`http://localhost:8088/schedules?_expand=user`)
+    fetch(`http://localhost:8088/schedules?_expand=user&_sort=startDate`)
       .then((res) => res.json())
       .then((schedulesArray) => {
         setSchedules(schedulesArray)
@@ -72,19 +72,27 @@ export const ScheduleList = ( ) => {
   return (
     <>
     <div className="schedule-container">
-    <h1 className="schedule-title">Schedule</h1>
-
-    <button className="add_button" onClick={() => navigate("/schedule/add-schedule")}>New Schedule Item</button>
+    
+    <div className="top-of-schedules">
+      <h1 className="schedule-title">Schedule</h1>
+      <button className="add_button" onClick={() => navigate("/schedule/add-schedule")}>New Schedule Item</button>
+    </div>
 
       {schedules.map((scheduleObj) => {
+        schedules.sort(function(a,b){
+          // Turn your strings into dates, and then subtract them
+          // to get a value that is either negative, positive, or zero.
+          return new Date(b.date) - new Date(a.date);
+        });
         return (
-          
+          <div className="all-sched-cards">
           <div className="schedule-card" key={scheduleObj.id}>
             <div className="schedule">
                 <h3 className="schedule-name">{scheduleObj.notes}</h3>
                 <p className="schedule-details"> From {formatStartDate(scheduleObj)} at {scheduleObj.startTime} through {formatEndDate(scheduleObj)} at {scheduleObj.endTime}</p>
                 <p>Submitted by: {scheduleObj.user.fullName}</p>
             </div>
+            
 
             {
             rainbowUserObject.id === scheduleObj.userId
@@ -102,7 +110,7 @@ export const ScheduleList = ( ) => {
                 {/* Can I put code in the ELSE part of this ternary statement to "accept or decline" the change? */}
                 </>
             }    
-            
+            </div>
           </div>
           
 

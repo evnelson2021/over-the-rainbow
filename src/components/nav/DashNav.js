@@ -9,7 +9,7 @@ export const DashNav = () => {
     }
 
     return (
-        <ul className="navbar">
+        <ul className="navStyle">
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="/edit-profile">Edit My Profile</Link>
             </li>
@@ -24,6 +24,7 @@ export const DashNav = () => {
                     </li>
                     : ""
             }
+            {/* </div> */}
         </ul>
     )
 }

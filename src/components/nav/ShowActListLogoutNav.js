@@ -9,7 +9,7 @@ export const ShowActListLogoutNav = () => {
     }
 
     return (
-        <ul className="navbar">
+        <ul className="navStyle">
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="/activities">Back to Activities</Link>
             </li>
