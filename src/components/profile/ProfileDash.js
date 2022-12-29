@@ -37,6 +37,9 @@ export const Dashboard = () => {
             <li className="Schedules__item active">
                 <Link className="schedule__link" to="/schedule">Schedule</Link>
             </li>
+            <li className="Uploads__item active">
+                <Link className="upload__link" to="/gallery">Gallery</Link>
+            </li>
         </ol>
         </>
 )

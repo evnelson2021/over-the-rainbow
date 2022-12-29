@@ -21,6 +21,10 @@ import { ScheduleEditForm } from "./Schedules/ScheduleEdit"
 import { ShowSchedListLogoutNav } from "./nav/ShowSchedListLogoutNav"
 import { ShowActListLogoutNav } from "./nav/ShowActListLogoutNav"
 import { ScheduleList } from "./Schedules/ScheduleList"
+import { ShowGalleryLogoutNav } from "./nav/ShowGalleryLogoutNav"
+import { GalleryList } from "./Uploads/GalleryList"
+import { UploadEditForm } from "./Uploads/UploadEdit"
+import { AddUploadForm } from "./Uploads/AddUploadForm"
 
 
 export const OverRainbow = () => {
@@ -104,7 +108,7 @@ export const OverRainbow = () => {
 		<Route path="/activities/add-activity" element={
 			<Authorized>
 			<>
-			<ShowActListLogoutNav />
+				<ShowActListLogoutNav />
 				<AddActivityForm />
 			</>
 		</Authorized>
@@ -114,7 +118,7 @@ export const OverRainbow = () => {
 		<Route path="/schedule/add-schedule" element={
 			<Authorized>
 			<>
-			<ShowSchedListLogoutNav />
+				<ShowSchedListLogoutNav />
 				<AddScheduleForm />
 			</>
 		</Authorized>
@@ -131,7 +135,7 @@ export const OverRainbow = () => {
 			
 		} />
 
-<Route path="/schedule/edit-schedule/:scheduleId" element={
+		<Route path="/schedule/edit-schedule/:scheduleId" element={
 			<Authorized>
 			<>
 				<ShowSchedListLogoutNav />
@@ -140,6 +144,37 @@ export const OverRainbow = () => {
 		</Authorized>
 			
 		} />
+
+		<Route path="/gallery" element={
+			<Authorized>
+			<>
+				<ShowDashLogoutNav />
+				<GalleryList />
+			</>
+		</Authorized>
+			
+		} />
+
+		<Route path="/gallery/edit-upload/:uploadId" element={
+			<Authorized>
+			<>
+				<ShowGalleryLogoutNav />
+				<UploadEditForm />
+			</>
+		</Authorized>
+			
+		} />
+
+		<Route path="/gallery/add-upload" element={
+			<Authorized>
+			<>
+				<ShowGalleryLogoutNav />
+				<AddUploadForm />
+			</>
+		</Authorized>
+			
+		} />
+
 	</Routes>
 }
 
