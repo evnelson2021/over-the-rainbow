@@ -10,11 +10,11 @@
     font-size: 18px;
 }
 
-.work-in-progress{
+/* .work-in-progress{
     display: flex;
     flex-direction: row;
-    height: 400px;
-    width: 400px;
+    height: 325px;
+    width: 325px;
     background: url("../../../public/Progress.png") center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -25,4 +25,69 @@
     align-content: center;
     align-items: center;
     margin-left: 35%;
+} */
+
+.home-grid{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 20px;
+    /* width: 1600px; */
+    justify-content: space-around;
+}
+
+.home-thumbnail-1{
+    height: 325px;
+    width: 325px;
+    background: url("../../../public/1-activities.png") center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    align-content: center;
+    align-items: center;
+}
+
+.home-thumbnail-2{
+    height: 325px;
+    width: 325px;
+    background: url("../../../public/2-schedules.png") center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    align-content: center;
+    align-items: center;
+}
+
+.home-thumbnail-3{
+    height: 325px;
+    width: 325px;
+    background: url("../../../public/3-gallery.png") center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    align-content: center;
+    align-items: center;
+}
+
+.home-thumbnail-4{
+    height: 325px;
+    width: 325px;
+    background: url("../../../public/4-records.png") center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    align-content: center;
+    align-items: center;
 }
