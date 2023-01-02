@@ -2,22 +2,30 @@ a:visited {text-decoration: none; color: rgb(80, 62, 62); }
 a:hover { text-decoration: none; color:teal; }
 
 .Activities__item{
-    margin-top: 150px;
+    margin-top: 100px;
     list-style-type: none;
-    /* justify-content: space-evenly */
 }
 
 .Schedules__item{
-    margin-top: 150px;
+    margin-top: 100px;
     list-style-type: none;
+}
+
+.Gallery__item{
+    margin-top: 200px;
+    list-style-type: none;
+}
+
+.Records__item{
+  margin-top: 200px;
+  list-style-type: none;
 }
 
 .activity__link{
     background-color: blanchedalmond;
     font-family: 'Coming Soon', cursive;
     font-size: 25px;
-    margin-top: 650px;
-    padding: 125px;
+    padding: 100px;
     border: dotted black 1px;
     border-radius: 1rem;
     box-shadow: 4px 3px 4px gray;
@@ -27,7 +35,27 @@ a:hover { text-decoration: none; color:teal; }
     background-color: blanchedalmond;
     font-family: 'Coming Soon', cursive;
     font-size: 25px;
-    padding: 125px;
+    padding: 100px;
+    border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px gray;
+}
+
+.gallery__link{
+  background-color: blanchedalmond;
+    font-family: 'Coming Soon', cursive;
+    font-size: 25px;
+    padding: 100px;
+    border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px gray;
+}
+
+.records__link{
+  background-color: blanchedalmond;
+    font-family: 'Coming Soon', cursive;
+    font-size: 25px;
+    padding: 100px;
     border: dotted black 1px;
     border-radius: 1rem;
     box-shadow: 4px 3px 4px gray;

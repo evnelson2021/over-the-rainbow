@@ -28,17 +28,22 @@ export const Dashboard = () => {
         <>
         <h1 className="welcome">Welcome, {user.fullName}</h1>
         <ol className="dashboard">
-            <li className="Activities__item active">
+            <li className="Activities__item">
                 <Link className="activity__link" to="" onClick={() => {
                     navigate("/activities")
                     refreshPage()
                 }}>Activities</Link>
             </li>
-            <li className="Schedules__item active">
+            <li className="Schedules__item">
                 <Link className="schedule__link" to="/schedule">Schedule</Link>
             </li>
-            <li className="Uploads__item active">
-                <Link className="upload__link" to="/gallery">Gallery</Link>
+        </ol>
+        <ol className="dashboard">
+            <li className="Gallery__item">
+                <Link className="gallery__link" to="/gallery">Gallery</Link>
+            </li>
+            <li className="Records__item">
+                <Link className="records__link" to="/records">Records</Link>
             </li>
         </ol>
         </>

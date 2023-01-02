@@ -1,4 +1,4 @@
-.all-picture-cards{
+.all-record-cards{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-.picture-form{
+.record-form{
     align-content: center;
     align-items: center;
     text-align: center;
@@ -18,7 +18,7 @@
     text-align: center;
 } */
 
-.picture-grid{
+.record-grid{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -27,10 +27,10 @@
     justify-content: space-around;
 }
 
-.top-of-pictures{
+.top-of-records{
     text-align: center;
 }
-/* .picture-container{
+/* .record-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +38,7 @@
     text-align: center;
 } */
 
-.picture-title{
+.record-title{
     font-size: 30px;
     margin-top: 10px;
     text-align: center;
@@ -59,7 +59,7 @@
     text-align: center;
 }
 
-.picture-card{
+.record-card{
     border: 2px solid black;
     padding: 5px;
     margin: 5px;
@@ -83,7 +83,7 @@
     width: 350px;
 }
 
-.picture-image{
+.record-image{
     width: 400px;
     height: auto;
 }

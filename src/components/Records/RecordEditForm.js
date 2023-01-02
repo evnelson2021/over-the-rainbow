@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import "./Gallery.css"
+import "./Records.css"
 
-export const UploadEditForm = () => {
+export const RecordEditForm = () => {
 
     const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
 
-const [picture, setPicture] = useState({
-        picName: "",
-        description: "",
-        userId: rainbowUserObject.id,
-        image: ""
+const [record, setRecord] = useState({
+    recordName: "",
+    description: "",
+    userId: rainbowUserObject.id,
+    image: ""
 })
 const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
-const {pictureId} = useParams()
+const {recordId} = useParams()
 
-    // TODO: Get user picture info from API and update state
+    // TODO: Get user record info from API and update state
 useEffect(() => {
-    fetch(`http://localhost:8088/pictures?id=${pictureId}`)
+    fetch(`http://localhost:8088/records?id=${recordId}`)
     .then(response => response.json())
     .then((data) => {
-        setPicture(data[0])
+        setRecord(data[0])
     })
 }, [])
 
@@ -30,20 +30,20 @@ useEffect(() => {
         clickEvent.preventDefault()
 
         /*
-            TODO: Perform the PUT fetch() call here to update the picture.
+            TODO: Perform the PUT fetch() call here to update the record.
             Navigate user to home page when done.
         */
 
-            fetch(`http://localhost:8088/pictures/${picture.id}`, {
+            fetch(`http://localhost:8088/records/${record.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(picture)
+                body: JSON.stringify(record)
             })
             .then(response => response.json())
             .then(() => {
-                setFeedback("Picture changes successfully saved")
+                setFeedback("Record changes successfully saved")
             })
             .then(() => {
                     setTimeout(() => navigate("/gallery"), 3000);
@@ -62,40 +62,40 @@ useEffect(() => {
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
-        <form className="picture">
-            <h2 className="picture-title">Update Picture Information</h2>
+        <form className="record">
+            <h2 className="record-title">Update Record Information</h2>
             <fieldset>
                 <div className="form-group">
-                    <label className="pic-text" htmlFor="name">Picture Name:</label>
+                    <label className="record-text" htmlFor="name">Record Name:</label>
                         <textarea
                         required
                         type="text"
-                        className="pic-control"
-                        placeholder="Name of Picture"
-                        value={picture.picName}
+                        className="record-control"
+                        placeholder="Name of Record"
+                        value={record.recordName}
                         onChange={
                             (evt)=> {
-                                const copy = {...picture}
-                                copy.picName = evt.target.value
-                                setPicture(copy)
+                                const copy = {...record}
+                                copy.recordName = evt.target.value
+                                setRecord(copy)
                             }
                         } />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label className="pic-text" htmlFor="location">Description:</label>
+                    <label className="record-text" htmlFor="location">Description:</label>
                     <textarea
                         required
                         type="text"
                         className="description-box"
-                        placeholder="Description of Picture"
-                        value={picture.description}
+                        placeholder="Description of Record"
+                        value={record.description}
                         onChange={
                             (evt)=> {
-                                const copy = {...picture}
+                                const copy = {...record}
                                 copy.description = evt.target.value
-                                setPicture(copy)
+                                setRecord(copy)
                             }
                         } />
                 </div>
@@ -104,7 +104,7 @@ useEffect(() => {
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="save-button">
-                Save Picture
+                Save Record
             </button>
         </form>
         </>

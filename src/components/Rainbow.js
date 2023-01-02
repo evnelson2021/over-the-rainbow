@@ -25,6 +25,10 @@ import { ShowGalleryLogoutNav } from "./nav/ShowGalleryLogoutNav"
 import { GalleryList } from "./Uploads/GalleryList"
 import { UploadEditForm } from "./Uploads/UploadEdit"
 import { AddUploadForm } from "./Uploads/AddUploadForm"
+import { ShowRecordsLogoutNav } from "./nav/ShowRecordsLogoutNav"
+import { RecordEditForm } from "./Records/RecordEditForm"
+import { AddRecordForm } from "./Records/AddRecordForm"
+import { RecordsList } from "./Records/RecordsList"
 
 
 export const OverRainbow = () => {
@@ -170,6 +174,36 @@ export const OverRainbow = () => {
 			<>
 				<ShowGalleryLogoutNav />
 				<AddUploadForm />
+			</>
+		</Authorized>
+			
+		} />
+
+		<Route path="/records" element={
+			<Authorized>
+			<>
+				<ShowDashLogoutNav />
+				<RecordsList />
+			</>
+		</Authorized>
+			
+		} />
+
+		<Route path="/records/edit-record/:recordId" element={
+			<Authorized>
+			<>
+				<ShowRecordsLogoutNav />
+				<RecordEditForm />
+			</>
+		</Authorized>
+			
+		} />
+
+		<Route path="/records/add-record" element={
+			<Authorized>
+			<>
+				<ShowRecordsLogoutNav />
+				<AddRecordForm />
 			</>
 		</Authorized>
 			
