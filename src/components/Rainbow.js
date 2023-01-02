@@ -155,7 +155,7 @@ export const OverRainbow = () => {
 			
 		} />
 
-		<Route path="/gallery/edit-upload/:uploadId" element={
+		<Route path="/gallery/edit-picture/:pictureId" element={
 			<Authorized>
 			<>
 				<ShowGalleryLogoutNav />
@@ -165,7 +165,7 @@ export const OverRainbow = () => {
 			
 		} />
 
-		<Route path="/gallery/add-upload" element={
+		<Route path="/gallery/add-picture" element={
 			<Authorized>
 			<>
 				<ShowGalleryLogoutNav />

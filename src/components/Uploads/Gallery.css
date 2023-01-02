@@ -1,0 +1,114 @@
+.all-picture-cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+}
+
+.picture-grid{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.top-of-pictures{
+    text-align: center;
+}
+/* .picture-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+} */
+
+.picture-title{
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+}
+
+.add_button{
+    margin: 0;
+    text-align: center;
+    font-family: 'Coming Soon', cursive;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.description-box{
+    margin: 20px;
+    width: 500px;
+    height: 100px;
+    text-align: center;
+}
+
+.picture-card{
+    border: 2px solid black;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid black;
+    background-color: rgb(238, 220, 193);
+    border: dotted black 1px;
+    border-radius: 1rem;
+    box-shadow: 4px 3px 4px #603E3E;
+    width: 400px;
+    /* text-align: center; */
+    /* text-align: center; */
+}
+
+.pic-text{
+    font-size: 24px;
+    padding: 10px;
+}
+
+.pic-control{
+    font-size: 20px;
+    width: 350px;
+}
+
+.picture-image{
+    width: 400px;
+    height: auto;
+}
+
+.save-button{
+    text-align: center;
+    margin-left: 70%;
+    margin-top: -20px;
+    margin-bottom: 15px;
+}
+
+.feedback{
+    border: 2px dotted teal;
+    padding: 1rem;
+    background-color: rgb(135, 188, 190);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-50%, -50%);
+    animation: 1s slideDown;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+display: block;
+}
+
+@keyframes slideDown {
+0% {
+    top: 20%;
+}
+
+100% {
+    top: 50%;
+}
+}

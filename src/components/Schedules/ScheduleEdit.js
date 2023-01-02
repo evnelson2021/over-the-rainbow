@@ -65,7 +65,7 @@ useEffect(() => {
             {feedback}
         </div>
         <form className="schedule">
-            <h2 className="schedule__title">Update Schedule Information</h2>
+            <h2 className="schedule-title">Update Schedule Information</h2>
             <fieldset>
                 <div className="form-group">
                     <label className="sched-text" htmlFor="date">Start Date:</label>
@@ -165,35 +165,3 @@ useEffect(() => {
         </>
     )
 }
-
-
-// TO SAVE WHILE TESTING THE ON CLICK SAVE:
-// "schedules": [
-//     {
-//       "id": 1,
-//       "startDate": "",
-//       "endDate": "",
-//       "startTime": "",
-//       "endTime": "",
-//       "notes": "Christmas Vacation - Louisiana Trip",
-//       "userId": 1
-//     },
-//     {
-//       "id": 1,
-//       "startDate": "",
-//       "endDate": "",
-//       "startTime": "",
-//       "endTime": "",
-//       "notes": "Spring Break - going to Florida",
-//       "userId": 2
-//     },
-//     {
-//       "id": 1,
-//       "startDate": "",
-//       "endDate": "",
-//       "startTime": "",
-//       "endTime": "",
-//       "notes": "Christmas Vacation",
-//       "userId": 1
-//     }
-//   ]

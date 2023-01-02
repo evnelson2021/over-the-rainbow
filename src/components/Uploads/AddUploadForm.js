@@ -1,24 +1,98 @@
 import Axios from 'axios'
 import { useState } from 'react'
-import {Image} from 'cloudinary-react'
+import { useNavigate } from 'react-router-dom'
+// import {Image} from 'cloudinary-react'
 
-export function AddUploadForm() {
+export const AddUploadForm = () => {
+
+    const localRainbowUser = localStorage.getItem("rainbow_user")
+    const rainbowUserObject = JSON.parse(localRainbowUser)
 
     const [imageSelected, setImageSelected] = useState("")
+    const [picture, setPicture] = useState ({
+        picName: "",
+        description: "",
+        userId: rainbowUserObject.id,
+        image: ""
+    })
 
-    const uploadImage = () =>{
+    const navigate = useNavigate()
+
+    const uploadImage = (event) => {
+        if (imageSelected) {
+            event.preventDefault()
+            console.log("Your image has been uploaded")
         const formData = new FormData()
         formData.append("file", imageSelected)
         formData.append("upload_preset", "hh4v83ta")
 
         Axios.post("https://api.cloudinary.com/v1_1/evnelson2021/image/upload", formData)
-        .then((response)=>
-        console.log(response))
-    }
+        .then((response) => {
+            console.log(response.data.url)
+            const pictureToSendToAPI = {
+                picName: picture.picName,
+                description: picture.description,
+                userId: rainbowUserObject.id,
+                image: response.data.url
+                }
 
-    return (<>
-        <div>New Upload Form will go here</div>
 
+            return fetch("http://localhost:8088/pictures", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pictureToSendToAPI)})
+                .then(response => response.json())
+                .then(() => {
+                    setTimeout(() => navigate("/gallery"), 2000)
+                })
+        })
+    }}
+
+    
+    return (
+        <>
+    
+        <form className="pictureForm">
+        <h2 className="pictureForm__title">New Picture</h2>
+            <fieldset>
+                <div className="form-group">
+                    <label className="pic-text" htmlFor="name">Picture Name:</label>
+                        <input
+                        required
+                        type="text"
+                        className="pic-control"
+                        placeholder="Name of Picture"
+                        value={picture.picName}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...picture}
+                                copy.picName = evt.target.value
+                                setPicture(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label className="pic-text" htmlFor="location">Description:</label>
+                    <textarea
+                        required
+                        type="text"
+                        className="pic-control"
+                        placeholder="Description of Picture"
+                        value={picture.description}
+                        onChange={
+                            (evt)=> {
+                                const copy = {...picture}
+                                copy.description = evt.target.value
+                                setPicture(copy)
+                            }
+                        } />
+                </div>
+            </fieldset>
+    
         <div>
             <input 
                 type="file" 
@@ -26,14 +100,21 @@ export function AddUploadForm() {
                     setImageSelected(event.target.files[0])
                 }} 
             /> 
-            <button onClick={uploadImage}> Upload Image </button>
+            
 
-            <Image 
+            {/* <Image 
             style={{width: 200}}
-            cloudName="evnelson2021"
+            cloudName="evnelson2021" 
             // publicId= 
             // publicId="https://res.cloudinary.com/evnelson2021/image/upload/v1672263684/sva07jvy1h416iix8djf.jpg"
-            />
+            />*/}
+
         </div>
-    </>)
+        <button onClick={uploadImage}> Upload Image </button>
+        </form>
+
+        </>
+    )
 }
+
+
