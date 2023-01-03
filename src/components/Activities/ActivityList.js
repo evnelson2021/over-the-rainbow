@@ -71,6 +71,36 @@ export const ActivityList = ( { searchTermState } ) => {
         return(formattedDate.join("/"))
     }
 
+    const formatStartTime = (activity) => {
+      let formattedTime = activity.startTime.split(":")
+      formattedTime = [formattedTime[0],formattedTime[1]]
+      if(
+        formattedTime[0] > 12
+      ) {
+        formattedTime[0] = formattedTime[0] - 12
+        return(formattedTime.join(":") + "PM")
+        // formattedTime = [formattedTime[0],formattedTime[1]]
+      } else {
+        return(formattedTime.join(":") + "AM")
+      }
+      // return(formattedTime.join(":"))
+  }
+
+  const formatEndTime = (activity) => {
+    let formattedTime = activity.endTime.split(":")
+    formattedTime = [formattedTime[0],formattedTime[1]]
+    if(
+      formattedTime[0] > 12
+    ) {
+      formattedTime[0] = formattedTime[0] - 12
+      return(formattedTime.join(":") + "PM")
+      // formattedTime = [formattedTime[0],formattedTime[1]]
+    } else {
+      return(formattedTime.join(":") + "AM")
+    }
+    // return(formattedTime.join(":"))
+}
+
 //     const parseInt(time) = date.getTime("the date")
 // if(time>12){
 // time -= 12
@@ -103,7 +133,7 @@ export const ActivityList = ( { searchTermState } ) => {
                 <h3 className="activity-name">{activityObj.name}</h3>
                 <p className="activity-details">Location: {activityObj.location}</p>
                 <p className="activity-details"> Date: {formatDate(activityObj)}</p>
-                <p className="activity-details">Time: {activityObj.startTime} to {activityObj.endTime}</p>
+                <p className="activity-details">Time: {formatStartTime(activityObj)} to {formatEndTime(activityObj)}</p>
                 <p>Submitted by: {activityObj.user.fullName}</p>
                 </div>
                 {
@@ -136,7 +166,7 @@ export const ActivityList = ( { searchTermState } ) => {
                 <h3 className="activity-name">{activityObj.name}</h3>
                 <p className="activity-details">Location: {activityObj.location}</p>
                 <p className="activity-details"> Date: {formatDate(activityObj)}</p>
-                <p className="activity-details">Time: {activityObj.startTime} to {activityObj.endTime}</p>
+                <p className="activity-details">Time: {formatStartTime(activityObj)} to {formatEndTime(activityObj)}</p>
                 <p>Submitted by: {activityObj.user.fullName}</p>
                 </div>
                 {
