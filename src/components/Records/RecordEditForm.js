@@ -46,7 +46,7 @@ useEffect(() => {
                 setFeedback("Record changes successfully saved")
             })
             .then(() => {
-                    setTimeout(() => navigate("/gallery"), 3000);
+                    setTimeout(() => navigate("/records"), 3000);
         })
     }
         
@@ -59,9 +59,11 @@ useEffect(() => {
 
     return (
         <>
+
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
+        
         <form className="record">
             <h2 className="record-title">Update Record Information</h2>
             <fieldset>

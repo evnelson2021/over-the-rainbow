@@ -22,6 +22,7 @@ export const AddScheduleForm = () => {
     })
 
     const navigate = useNavigate()
+    const [feedback, setFeedback] = useState("")
 
     // useEffect(() => {
     //     fetch(`http://localhost:8088/schedules?_expand=user`)
@@ -32,7 +33,6 @@ export const AddScheduleForm = () => {
     //   }, [])
 
 
-   
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -55,7 +55,7 @@ export const AddScheduleForm = () => {
             schedule.endTime &&
             schedule.notes &&
             schedule.userId
-          ) {
+        ) {
             fetch(`http://localhost:8088/schedules?_expand=user`, {
             method: "POST",
             headers: {
@@ -65,14 +65,30 @@ export const AddScheduleForm = () => {
         })
             .then(response => response.json())
             .then(() => {
-                navigate("/schedule")
+                setFeedback(("New Schedule Saved"), 2000)
+            })
+            .then(() => {
+                setTimeout(() => navigate("/schedule"), 2000)
             })
         } else {
                 alert('Please complete the form')
-              }
+        }
     }
 
+    useEffect(() => {
+        if (feedback !== "") {
+            // Clear feedback to make entire element disappear after 3 seconds
+            setTimeout(() => setFeedback(""), 3000);
+        }
+    }, [feedback])
+
     return (
+        <>
+
+        <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
+            {feedback}
+        </div>
+        
         <form className="scheduleForm">
             <h2 className="scheduleForm__title">New Schedule Change</h2>
             <fieldset>
@@ -196,5 +212,6 @@ export const AddScheduleForm = () => {
                 Submit Schedule Change
             </button>
         </form>
+        </>
     )
 } 

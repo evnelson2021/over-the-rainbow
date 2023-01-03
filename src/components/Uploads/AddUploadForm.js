@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import {Image} from 'cloudinary-react'
 
@@ -17,6 +17,7 @@ export const AddUploadForm = () => {
     })
 
     const navigate = useNavigate()
+    const [feedback, setFeedback] = useState("")
 
     const uploadImage = (event) => {
         if (imageSelected) {
@@ -45,14 +46,27 @@ export const AddUploadForm = () => {
                 body: JSON.stringify(pictureToSendToAPI)})
                 .then(response => response.json())
                 .then(() => {
+                    setFeedback("New Upload Successful")
+                })
+                .then(() => {
                     setTimeout(() => navigate("/gallery"), 2000)
                 })
         })
     }}
 
+    useEffect(() => {
+        if (feedback !== "") {
+            // Clear feedback to make entire element disappear after 3 seconds
+            setTimeout(() => setFeedback(""), 3000);
+        }
+    }, [feedback])
     
     return (
         <>
+
+        <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
+            {feedback}
+        </div>
     
         <form className="pictureForm">
         <h2 className="pictureForm__title">New Picture</h2>

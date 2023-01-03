@@ -78,10 +78,10 @@ export const ActivityList = ( { searchTermState } ) => {
         formattedTime[0] > 12
       ) {
         formattedTime[0] = formattedTime[0] - 12
-        return(formattedTime.join(":") + "PM")
+        return(formattedTime.join(":") + " PM")
         // formattedTime = [formattedTime[0],formattedTime[1]]
       } else {
-        return(formattedTime.join(":") + "AM")
+        return(formattedTime.join(":") + " AM")
       }
       // return(formattedTime.join(":"))
   }
@@ -93,10 +93,10 @@ export const ActivityList = ( { searchTermState } ) => {
       formattedTime[0] > 12
     ) {
       formattedTime[0] = formattedTime[0] - 12
-      return(formattedTime.join(":") + "PM")
+      return(formattedTime.join(":") + " PM")
       // formattedTime = [formattedTime[0],formattedTime[1]]
     } else {
-      return(formattedTime.join(":") + "AM")
+      return(formattedTime.join(":") + " AM")
     }
     // return(formattedTime.join(":"))
 }
@@ -190,31 +190,3 @@ export const ActivityList = ( { searchTermState } ) => {
     </>
   )
 }
-
-// export const ActivityList = ( {searchTermState} ) => {
-//     const [activities, setActivities] = useState ([])
-// }
-
-
-
-// const getAllActivities = () => {
-//     fetch(`http://localhost:8088/activities`)
-//             .then(response => response.json())
-//             .then((activityArray) => {
-//                 setActivities(activityArray)
-//             })
-// }
-
-// useEffect(
-//     () => {
-//         getAllActivities()
-
-//         fetch(`http://localhost:8088/activities`)
-//             .then(response => response.json())
-//             .then((activityArray) => {
-//                 setActivities(activityArray)
-//             })
-//         // console.log("Initial state of activities", activities) // View the initial state of activities
-//     },
-//     [] // When this array is empty, you are observing initial component state
-// )

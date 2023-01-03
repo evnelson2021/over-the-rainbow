@@ -69,9 +69,11 @@ const {activityId} = useParams()
 
     return (
         <>
+        
         <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
             {feedback}
         </div>
+
         <form className="activityEditForm">
             <h2 className="activityEdit__title">Edit Activity Information</h2>
             <fieldset>

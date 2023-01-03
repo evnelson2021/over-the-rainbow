@@ -53,19 +53,41 @@ export const ScheduleList = ( ) => {
         return(formattedDate.join("/"))
     }
 
-      const formatEndDate = (activity) => {
-        let formattedDate = activity.endDate.split("-")
+      const formatEndDate = (schedule) => {
+        let formattedDate = schedule.endDate.split("-")
         formattedDate = [formattedDate[1],formattedDate[2],formattedDate[0]]
         return(formattedDate.join("/"))
     }
 
-    //     const parseInt(time) = date.getTime("the date")
-// if(time>12){
-// time -= 12
-// return time
-// }else{
-// return time
-// }
+      const formatStartTime = (schedule) => {
+        let formattedTime = schedule.startTime.split(":")
+        formattedTime = [formattedTime[0],formattedTime[1]]
+        if(
+          formattedTime[0] > 12
+        ) {
+          formattedTime[0] = formattedTime[0] - 12
+          return(formattedTime.join(":") + " PM")
+          // formattedTime = [formattedTime[0],formattedTime[1]]
+        } else {
+          return(formattedTime.join(":") + " AM")
+        }
+        // return(formattedTime.join(":"))
+      }
+
+    const formatEndTime = (schedule) => {
+      let formattedTime = schedule.endTime.split(":")
+      formattedTime = [formattedTime[0],formattedTime[1]]
+      if(
+        formattedTime[0] > 12
+      ) {
+        formattedTime[0] = formattedTime[0] - 12
+        return(formattedTime.join(":") + " PM")
+        // formattedTime = [formattedTime[0],formattedTime[1]]
+      } else {
+        return(formattedTime.join(":") + " AM")
+      }
+      // return(formattedTime.join(":"))
+    }
 
     
 // compare array index [0] year, assign to older or newer, 
@@ -89,7 +111,7 @@ export const ScheduleList = ( ) => {
           <div className="schedule-card" key={scheduleObj.id}>
             <div className="schedule">
                 <h3 className="schedule-name">{scheduleObj.notes}</h3>
-                <p className="schedule-details"> From {formatStartDate(scheduleObj)} at {scheduleObj.startTime} through {formatEndDate(scheduleObj)} at {scheduleObj.endTime}</p>
+                <p className="schedule-details"> From {formatStartDate(scheduleObj)} at {formatStartTime(scheduleObj)} through {formatEndDate(scheduleObj)} at {formatEndTime(scheduleObj)}</p>
                 <p>Submitted by: {scheduleObj.user.fullName}</p>
             </div>
             

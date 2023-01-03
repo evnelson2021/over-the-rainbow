@@ -21,34 +21,7 @@ export const AddActivityForm = () => {
         userId: rainbowUserObject.id
     })
 
-    // const [activityItem, addTwoActivities] = useState({
-    //     name: "",
-    //     location: "",
-    //     date: "",
-    //     startTime: "",
-    //     endTime: "",
-    //     kidId: 1,
-    //     userId: rainbowUserObject.id
-    // },
-    // {
-    //     name: "",
-    //     location: "",
-    //     date: "",
-    //     startTime: "",
-    //     endTime: "",
-    //     kidId: 2,
-    //     userId: rainbowUserObject.id
-    // }
-    // )
-
     const [feedback, setFeedback] = useState("")
-
-    // const [kids, setKids] = useState([])
-    /*
-        TODO: Use the useNavigation() hook so you can redirect
-        the user to the activity list
-    */
-
     const navigate = useNavigate()
 
     // useEffect(() => {
@@ -70,7 +43,51 @@ export const AddActivityForm = () => {
     // const localRainbowUser = localStorage.getItem("rainbow_user")
     // const rainbowUserObject = JSON.parse(localRainbowUser)
 
-    const handleSaveButtonClick = (event) => {
+    // const handleSaveButtonClick = (event) => {
+    //     event.preventDefault()
+
+    //     // TODO: Create the object to be saved to the API
+    //     const activityToSendToAPI = {
+    //         name: activity.name,
+    //         location: activity.location,
+    //         date: activity.date,
+    //         startTime: activity.startTime,
+    //         endTime: activity.endTime,
+    //         kidId: activity.kidId,
+    //         userId: rainbowUserObject.id
+    //     } 
+
+        
+    //     // TODO: Perform the fetch() to POST the object to the API
+    //     if (
+    //         activity.name &&
+    //         activity.location &&
+    //         activity.date &&
+    //         activity.startTime &&
+    //         activity.endTime &&
+    //         activity.kidId
+    //     ) {
+    //     return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(activityToSendToAPI)
+    //     })
+    //         .then(response => response.json())
+    //         .then(() => {
+    //             setFeedback(("New Activity Saved"), 2000)
+    //         })
+    //         .then(() => {
+    //             setTimeout(() => navigate("/activities"), 2000)
+    //         })
+    //     } else {
+    //         alert('Please complete the form')
+    //     }
+    // }
+
+
+    const handleBothKidsSaveButton = (event) => {
         event.preventDefault()
 
         // TODO: Create the object to be saved to the API
@@ -82,6 +99,26 @@ export const AddActivityForm = () => {
             endTime: activity.endTime,
             kidId: activity.kidId,
             userId: rainbowUserObject.id
+        }
+
+        const activityToSendToAPI1 = {
+            name: activity.name,
+            location: activity.location,
+            date: activity.date,
+            startTime: activity.startTime,
+            endTime: activity.endTime,
+            kidId: 1,
+            userId: rainbowUserObject.id
+        }
+
+        const activityToSendToAPI2 = {
+            name: activity.name,
+            location: activity.location,
+            date: activity.date,
+            startTime: activity.startTime,
+            endTime: activity.endTime,
+            kidId: 2,
+            userId: rainbowUserObject.id
         } 
 
         
@@ -92,9 +129,38 @@ export const AddActivityForm = () => {
             activity.date &&
             activity.startTime &&
             activity.endTime &&
-            activity.kidId
+            activity.kidId === 3
         ) {
         return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(activityToSendToAPI1)
+        })
+            .then (fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(activityToSendToAPI2)
+        }))
+            .then(response => response.json())
+            .then(() => {
+                setFeedback(("New Activity Saved"), 2000)
+            })
+            .then(() => {
+                setTimeout(() => navigate("/activities"), 2000)
+            })
+        } else if(
+            activity.name &&
+            activity.location &&
+            activity.date &&
+            activity.startTime &&
+            activity.endTime &&
+            activity.kidId
+        ){
+            return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -113,10 +179,20 @@ export const AddActivityForm = () => {
         }
     }
 
-    // HandlebothkidsSave button that creates two separate activities with kidId 1 and 2 run POST twice
-    // use radio buttons - value of 3 on third option - if id is 3, do it twice, otherwise just once with appropriate kidId
+    useEffect(() => {
+        if (feedback !== "") {
+            // Clear feedback to make entire element disappear after 3 seconds
+            setTimeout(() => setFeedback(""), 3000);
+            }
+    }, [feedback])
 
     return (
+        <>
+        
+        <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
+            {feedback}
+        </div>
+        
         <form className="activityForm">
             <h2 className="activityForm__title">New Activity</h2>
             <fieldset>
@@ -235,129 +311,30 @@ export const AddActivityForm = () => {
                                 addActivity(copy)
                             }
                         } />
-                        {/* <label className="act-text" htmlFor="name">Both:</label> */}
-                        {/* <input type="radio"
+                        <label className="act-text" htmlFor="name">Both:</label>
+                        <input type="radio"
                         name="kid"
                         value= "3"
                         onClick={
                             (click) => {
                                 const copy = {...activity}
                                 copy.kidId = parseInt(click.target.value)
-                                setActivity(copy)
+                                addActivity(copy)
                             }
-                        } /> */}
+                        } /> 
                 </div>
             </fieldset>
             <button 
-            onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
+            onClick={(clickEvent) => handleBothKidsSaveButton(clickEvent) }
             className="save-button">
                 Submit Activity
             </button>
+            {/* <button 
+            onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }
+            className="save-button">
+                Submit Activity
+            </button> */}
         </form>
+        </>
     )
 }
-
-
-// JUST PUTTING THIS HERE FOR LATER - MAKING A DROPDOWN - will need "Both" option with an id of 3 to add to both activity lists
-{/* <label className="act-text" htmlFor="kidId">Kid(s)</label><br></br>
-                    <select>
-                        <option 
-                        required autoFocus
-                        type="checkbox" 
-                        id="kidId" 
-                        className="act-control"
-                        value={activity.kidId}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...activity}
-                                copy.kidId = evt.target.checked
-                                addActivity(copy)
-                            }
-                        }/>
-                    </select> */}
-
-            {/* <label className="act-text" htmlFor="kids">Kids</label><br></br> 
-            <select onChange={setKids}>
-                <option value={0} type="select" id="kidId" className="act-control" required></option>
-                {
-                kids.map ( (kid) => {
-                return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
-                </select> */}
-
-
-                // return (
-                //     <div onChange={this.onChangeValue}>
-                //       <input type="radio" value="Male" name="gender" /> Male
-                //       <input type="radio" value="Female" name="gender" /> Female
-                //       <input type="radio" value="Other" name="gender" /> Other
-                //     </div>
-                //   )
-
-
-            //     <fieldset>
-            //     <div className="form-group">
-            //         <label className="act-text" htmlFor="name">Maverick:</label>
-            //         <input type="radio"
-            //             value="1"
-            //             onChange={
-            //                 (evt) => {
-            //                     const copy = {...activity}
-            //                     copy.kidId = parseInt(evt.target.value)
-            //                     addActivity(copy)
-            //                 }
-            //             } />
-            //         <label className="act-text" htmlFor="name">Adaline:</label>
-            //         <input type="checkbox"
-            //             value= "2"
-            //             onChange={
-            //                 (evt) => {
-            //                     const copy = {...activity}
-            //                     copy.kidId = parseInt(evt.target.value)
-            //                     addActivity(copy)
-            //                 }
-            //             } />
-            //     </div>
-            // </fieldset>
-
-
-                // return (
-                //       <div className="radio">
-                //         <label>
-                //           <input
-                //             type="radio"
-                //             value="Male"
-                //             checked={this.state.selectedOption === "Male"}
-                //             onChange={this.onValueChange}
-                //           />
-                //           Male
-                //         </label>
-                //       </div>
-                //       <div className="radio">
-                //         <label>
-                //           <input
-                //             type="radio"
-                //             value="Female"
-                //             checked={this.state.selectedOption === "Female"}
-                //             onChange={this.onValueChange}
-                //           />
-                //           Female
-                //         </label>
-                //       </div>
-                //       <div className="radio">
-                //         <label>
-                //           <input
-                //             type="radio"
-                //             value="Other"
-                //             checked={this.state.selectedOption === "Other"}
-                //             onChange={this.onValueChange}
-                //           />
-                //           Other
-                //         </label>
-                //       </div>
-                //       <div>
-                //         Selected option is : {this.state.selectedOption}
-                //       </div>
-                //       <button className="btn btn-default" type="submit">
-                //         Submit
-                //       </button>
-                //   )
