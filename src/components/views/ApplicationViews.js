@@ -9,6 +9,7 @@ import { AddScheduleForm } from "../Schedules/AddScheduleForm"
 import { Home } from "../home/Home"
 import { ScheduleEditForm } from "../Schedules/ScheduleEdit"
 import { ScheduleList } from "../Schedules/ScheduleList"
+import { Dashboard } from "../profile/ProfileDash"
 // import NavImg from "./NavImg.png"
 
 
@@ -26,7 +27,7 @@ export const ApplicationViews = () => {
                 <Route path="*" element={ <Home /> } />
                 <Route path="login" element={ <Login /> } />
                 <Route path="edit-profile" element={ <UpdateProfileForm /> } />
-                <Route path="dash" element={ <></> } />
+                <Route path="dash" element={ <Dashboard/> } />
                 <Route path="activities" element={ <ActivityContainer /> } />
                 <Route path="/activities/edit-activity/:activityId" element={ <ActivityEditForm /> } />
                 <Route path="activities/add-activity" element={ <AddActivityForm /> } />
