@@ -17,7 +17,6 @@ const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
 const {recordId} = useParams()
 
-    // TODO: Get user record info from API and update state
 useEffect(() => {
     fetch(`http://localhost:8088/records?id=${recordId}`)
     .then(response => response.json())
@@ -28,11 +27,6 @@ useEffect(() => {
 
     const handleSaveButtonClick = (clickEvent) => {
         clickEvent.preventDefault()
-
-        /*
-            TODO: Perform the PUT fetch() call here to update the record.
-            Navigate user to home page when done.
-        */
 
             fetch(`http://localhost:8088/records/${record.id}`, {
                 method: "PUT",
@@ -52,7 +46,6 @@ useEffect(() => {
         
         useEffect(() => {
             if (feedback !== "") {
-                // Clear feedback to make entire element disappear after 3 seconds
                 setTimeout(() => setFeedback(""), 3000);
             }
         }, [feedback])

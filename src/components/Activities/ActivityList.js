@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react"
-import { Navigate, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import "./Activities.css"
 
   const localRainbowUser = localStorage.getItem("rainbow_user")
   const rainbowUserObject = JSON.parse(localRainbowUser)
 
 export const ActivityList = ( { searchTermState } ) => {
-    const [activities, setActivities] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
+    const [activities, setActivities] = useState ([])
     const [filteredActivities, setFiltered] = useState([])
-    // const navigateToAddActivity = () => {
-    //   Navigate("/activities/add-activity")
-    // }
     const navigate = useNavigate()
 
     useEffect(
@@ -31,18 +28,13 @@ export const ActivityList = ( { searchTermState } ) => {
       [activities]
   )
 
-
-  // Use Effect watches for state change
-  // It takes two arguments, a function and an array
-  // The array is which states we want to observe
-  // The function is what we want to do when that observed state changes
   useEffect(() => {
     fetch(`http://localhost:8088/activities?_expand=kid&_expand=user&_sort=date`)
       .then((res) => res.json())
       .then((activitiesArray) => {
         setActivities(activitiesArray)
       })
-  }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
+  }, [])
 
   const getAllActivities = () => {
     fetch(`http://localhost:8088/activities?_expand=kid&_expand=user&_sort=date`)
@@ -62,8 +54,6 @@ export const ActivityList = ( { searchTermState } ) => {
                 })
         }} className="schedule_delete">Delete</button>
 }
-
-      // "date": "2022-12-06"
     
       const formatDate = (activity) => {
         let formattedDate = activity.date.split("-")
@@ -79,11 +69,9 @@ export const ActivityList = ( { searchTermState } ) => {
       ) {
         formattedTime[0] = formattedTime[0] - 12
         return(formattedTime.join(":") + " PM")
-        // formattedTime = [formattedTime[0],formattedTime[1]]
       } else {
         return(formattedTime.join(":") + " AM")
       }
-      // return(formattedTime.join(":"))
   }
 
   const formatEndTime = (activity) => {
@@ -94,22 +82,11 @@ export const ActivityList = ( { searchTermState } ) => {
     ) {
       formattedTime[0] = formattedTime[0] - 12
       return(formattedTime.join(":") + " PM")
-      // formattedTime = [formattedTime[0],formattedTime[1]]
     } else {
       return(formattedTime.join(":") + " AM")
     }
-    // return(formattedTime.join(":"))
 }
 
-//     const parseInt(time) = date.getTime("the date")
-// if(time>12){
-// time -= 12
-// return time
-// }else{
-// return time
-// }
-
-// compare array index [0] year, assign to older or newer, 
   return (
     <>
     <div className="top-of-activities">
@@ -146,8 +123,6 @@ export const ActivityList = ( { searchTermState } ) => {
                     :<>
                     </>
                 }
-                    
-                
               </div>
               </div>
 

@@ -4,7 +4,7 @@ import "./Schedule.css"
 
 
 export const ScheduleList = ( ) => {
-    const [schedules, setSchedules] = useState ([]) // returns an array: [stateVariable, setStatefunction] takes one argument: the initial value of the state variable
+    const [schedules, setSchedules] = useState ([])
 
     const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -13,10 +13,6 @@ export const ScheduleList = ( ) => {
     const navigate = useNavigate()
     const {scheduleId} = useParams()
 
-  // Use Effect watches for state change
-  // It takes two arguments, a function and an array
-  // The array is which states we want to observe
-  // The function is what we want to do when that observed state changes
   useEffect(
     () => {
     fetch(`http://localhost:8088/schedules?_expand=user&_sort=startDate`)
@@ -24,7 +20,7 @@ export const ScheduleList = ( ) => {
       .then((schedulesArray) => {
         setSchedules(schedulesArray)
       })
-  }, []) // An empty dependency array will watch for the initial render of the component and only run the callback on that  initial run.
+  }, [])
 
   const getAllSchedules = () => {
     fetch(`http://localhost:8088/schedules?_expand=user&_sort=startDate`)
@@ -44,8 +40,6 @@ export const ScheduleList = ( ) => {
                 })
         }} className="schedule_delete">Delete</button>
 }
-
-      // "date": "2022-12-06"
     
       const formatStartDate = (schedule) => {
         let formattedDate = schedule.startDate.split("-")
@@ -67,11 +61,9 @@ export const ScheduleList = ( ) => {
         ) {
           formattedTime[0] = formattedTime[0] - 12
           return(formattedTime.join(":") + " PM")
-          // formattedTime = [formattedTime[0],formattedTime[1]]
         } else {
           return(formattedTime.join(":") + " AM")
         }
-        // return(formattedTime.join(":"))
       }
 
     const formatEndTime = (schedule) => {
@@ -82,15 +74,11 @@ export const ScheduleList = ( ) => {
       ) {
         formattedTime[0] = formattedTime[0] - 12
         return(formattedTime.join(":") + " PM")
-        // formattedTime = [formattedTime[0],formattedTime[1]]
       } else {
         return(formattedTime.join(":") + " AM")
       }
-      // return(formattedTime.join(":"))
     }
 
-    
-// compare array index [0] year, assign to older or newer, 
   return (
     <>
     <div className="schedule-container">
@@ -102,8 +90,6 @@ export const ScheduleList = ( ) => {
 
       {schedules.map((scheduleObj) => {
         schedules.sort(function(a,b){
-          // Turn your strings into dates, and then subtract them
-          // to get a value that is either negative, positive, or zero.
           return new Date(b.date) - new Date(a.date);
         });
         return (
@@ -124,12 +110,8 @@ export const ScheduleList = ( ) => {
                 
                 {deleteButton(scheduleObj.id)}
                 
-
-
-                {/* <button className="delete_button" onClick={() => ("/activities")}>Delete Activity</button> */}
                 </>
                 :<>
-                {/* Can I put code in the ELSE part of this ternary statement to "accept or decline" the change? */}
                 </>
             }    
             </div>

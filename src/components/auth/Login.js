@@ -1,9 +1,6 @@
 import React, { useState } from "react"
-import Axios from 'axios'
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
-// import "../nav/NavBar.css"
 
 export const Login = () => {
     const [email, set] = useState("emilynelson@gmail.com")
@@ -52,9 +49,6 @@ export const Login = () => {
                     </div>
                 </form>
             </section>
-            {/* <section className="link--register">
-                <Link to="/register">Not a member yet?</Link>
-            </section> */}
         </main>
     )
 }

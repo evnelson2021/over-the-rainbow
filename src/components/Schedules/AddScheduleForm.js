@@ -4,11 +4,7 @@ import "./Schedule.css"
 
 
 export const AddScheduleForm = () => {
-    /*
-        TODO: Add the correct default properties to the
-        initial state object
-    */
-        
+
         const localRainbowUser = localStorage.getItem("rainbow_user")
         const rainbowUserObject = JSON.parse(localRainbowUser)
 
@@ -24,20 +20,9 @@ export const AddScheduleForm = () => {
     const navigate = useNavigate()
     const [feedback, setFeedback] = useState("")
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:8088/schedules?_expand=user`)
-    //       .then((res) => res.json())
-    //       .then((schedulesArray) => {
-    //         setSchedules(schedulesArray)
-    //       })
-    //   }, [])
-
-
-
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        // TODO: Create the object to be saved to the API
         const scheduleToSendToAPI = {
             startDate: schedule.startDate,
             endDate: schedule.endDate,
@@ -47,7 +32,6 @@ export const AddScheduleForm = () => {
             userId: rainbowUserObject.id
         } 
 
-        // TODO: Perform the fetch() to POST the object to the API
         if (
             schedule.startDate &&
             schedule.endDate &&
@@ -77,7 +61,6 @@ export const AddScheduleForm = () => {
 
     useEffect(() => {
         if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
@@ -108,8 +91,6 @@ export const AddScheduleForm = () => {
                             }
                         } />
                 </div>
-                {/* create a separate component that will deal with the date the way I want it to, then import that into the components I need so it will deal with the date  */}
-                {/* write helper function to reformat the date to display properly */}
             </fieldset>
             <fieldset>
                 <div className="form-group">
@@ -181,30 +162,6 @@ export const AddScheduleForm = () => {
                         } />
                 </div>
             </fieldset>
-                    {/* <label className="sched-text" htmlFor="kidId">Kid(s)</label><br></br>
-                    <select>
-                        <option 
-                        required autoFocus
-                        type="checkbox" 
-                        id="kidId" 
-                        className="sched-control"
-                        value={schedule.kidId}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...schedule}
-                                copy.kidId = evt.target.checked
-                                addSchedule(copy)
-                            }
-                        }/>
-                    </select> */}
-
-            {/* <label className="sched-text" htmlFor="kids">Kids</label><br></br> 
-            <select onChange={setKids}>
-                <option value={0} type="select" id="kidId" className="sched-control" required></option>
-                {
-                kids.map ( (kid) => {
-                return <option key-"kidId--{kid. id}" value={kid.id}>{kid.name}</option>
-                </select> */}
 
             <button 
             onClick={(clickEvent) => handleSaveButtonClick(clickEvent) }

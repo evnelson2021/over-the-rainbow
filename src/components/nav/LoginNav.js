@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
 export const LoginNav = () => {
-    // const navigate = useNavigate()
 
     return (
         <ul className="navStyle">

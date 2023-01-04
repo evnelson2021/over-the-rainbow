@@ -3,10 +3,6 @@ import { useNavigate } from "react-router-dom"
 
 
 export const AddActivityForm = () => {
-    /*
-        TODO: Add the correct default properties to the
-        initial state object
-    */
 
         const localRainbowUser = localStorage.getItem("rainbow_user")
         const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -24,73 +20,9 @@ export const AddActivityForm = () => {
     const [feedback, setFeedback] = useState("")
     const navigate = useNavigate()
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:8088/activities?_expand=kid`)
-    //       .then((res) => res.json())
-    //       .then((activitiesArray) => {
-    //         setActivities(activitiesArray)
-    //       })
-    //   }, [])
-
-    // const now = new Date();
-    // const dateString = now.toLocaleDateString({
-    //     weekday: "short",
-    //     year: "numeric",
-    //     month: "2-digit",
-    //     day: "numeric"
-    //     })
-
-    // const localRainbowUser = localStorage.getItem("rainbow_user")
-    // const rainbowUserObject = JSON.parse(localRainbowUser)
-
-    // const handleSaveButtonClick = (event) => {
-    //     event.preventDefault()
-
-    //     // TODO: Create the object to be saved to the API
-    //     const activityToSendToAPI = {
-    //         name: activity.name,
-    //         location: activity.location,
-    //         date: activity.date,
-    //         startTime: activity.startTime,
-    //         endTime: activity.endTime,
-    //         kidId: activity.kidId,
-    //         userId: rainbowUserObject.id
-    //     } 
-
-        
-    //     // TODO: Perform the fetch() to POST the object to the API
-    //     if (
-    //         activity.name &&
-    //         activity.location &&
-    //         activity.date &&
-    //         activity.startTime &&
-    //         activity.endTime &&
-    //         activity.kidId
-    //     ) {
-    //     return fetch(`http://localhost:8088/activities?_expand=kid&_expand=user`, {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(activityToSendToAPI)
-    //     })
-    //         .then(response => response.json())
-    //         .then(() => {
-    //             setFeedback(("New Activity Saved"), 2000)
-    //         })
-    //         .then(() => {
-    //             setTimeout(() => navigate("/activities"), 2000)
-    //         })
-    //     } else {
-    //         alert('Please complete the form')
-    //     }
-    // }
-
-
     const handleBothKidsSaveButton = (event) => {
         event.preventDefault()
 
-        // TODO: Create the object to be saved to the API
         const activityToSendToAPI = {
             name: activity.name,
             location: activity.location,
@@ -122,7 +54,6 @@ export const AddActivityForm = () => {
         } 
 
         
-        // TODO: Perform the fetch() to POST the object to the API
         if (
             activity.name &&
             activity.location &&
@@ -181,7 +112,6 @@ export const AddActivityForm = () => {
 
     useEffect(() => {
         if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
             setTimeout(() => setFeedback(""), 3000);
             }
     }, [feedback])
@@ -248,8 +178,7 @@ export const AddActivityForm = () => {
                             }
                         } />
                 </div>
-                {/* create a separate component that will deal with the date the way I want it to, then import that into the components I need so it will deal with the date  */}
-                {/* write helper function to reformat the date to display properly */}
+
             </fieldset>
             <fieldset>
                 <div className="form-group">

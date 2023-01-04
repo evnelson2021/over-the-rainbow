@@ -10,12 +10,7 @@ export const GalleryList = () => {
         const [pictures, setPicture] = useState([])
     
         const navigate = useNavigate()
-        // const {pictureId} = useParams()
-    
-      // Use Effect watches for state change
-      // It takes two arguments, a function and an array
-      // The array is which states we want to observe
-      // The function is what we want to do when that observed state changes
+
     useEffect(
         () => {
         fetch(`http://localhost:8088/pictures?_expand=user&_sort=startDate`)
@@ -75,12 +70,8 @@ export const GalleryList = () => {
                     
                     {deleteButton(pictureObj.id)}
                     
-    
-    
-                    {/* <button className="delete_button" onClick={() => ("/activities")}>Delete Activity</button> */}
                     </>
                     :<>
-                    {/* Can I put code in the ELSE part of this ternary statement to "accept or decline" the change? */}
                     </>
                 }    
                 </div>

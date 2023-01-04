@@ -71,11 +71,8 @@ export const RecordsList = () => {
                     {deleteButton(recordObj.id)}
                     
     
-    
-                    {/* <button className="delete_button" onClick={() => ("/activities")}>Delete Activity</button> */}
                     </>
                     :<>
-                    {/* Can I put code in the ELSE part of this ternary statement to "accept or decline" the change? */}
                     </>
                 }    
                 </div>

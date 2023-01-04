@@ -13,8 +13,3 @@ export const Authorized = ({ children }) => {
             state={{ location }} />
     }
 }
-
-// return children in else as well
-
-
-// 

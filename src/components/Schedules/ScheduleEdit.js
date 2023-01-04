@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom"
 import "./Schedule.css"
 
 export const ScheduleEditForm = () => {
-    // TODO: Provide initial state for schedule
     const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
 
@@ -19,7 +18,6 @@ const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
 const {scheduleId} = useParams()
 
-    // TODO: Get user schedule info from API and update state
 useEffect(() => {
     fetch(`http://localhost:8088/schedules?id=${scheduleId}`)
     .then(response => response.json())
@@ -30,11 +28,6 @@ useEffect(() => {
 
     const handleSaveButtonClick = (clickEvent) => {
         clickEvent.preventDefault()
-
-        /*
-            TODO: Perform the PUT fetch() call here to update the schedule.
-            Navigate user to home page when done.
-        */
 
             fetch(`http://localhost:8088/schedules/${schedule.id}`, {
                 method: "PUT",
@@ -54,7 +47,6 @@ useEffect(() => {
         
         useEffect(() => {
             if (feedback !== "") {
-                // Clear feedback to make entire element disappear after 3 seconds
                 setTimeout(() => setFeedback(""), 3000);
             }
         }, [feedback])

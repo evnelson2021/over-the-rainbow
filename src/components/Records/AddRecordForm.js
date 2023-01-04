@@ -1,7 +1,6 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import {Record} from 'cloudinary-react'
 
 export const AddRecordForm = () => {
 
@@ -56,7 +55,6 @@ export const AddRecordForm = () => {
 
     useEffect(() => {
         if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
@@ -116,13 +114,6 @@ export const AddRecordForm = () => {
                 }} 
             /> 
             
-
-            {/* <Record 
-            style={{width: 200}}
-            cloudName="evnelson2021" 
-            // publicId= 
-            // publicId="https://res.cloudinary.com/evnelson2021/record/record/v1672263684/sva07jvy1h416iix8djf.jpg"
-            />*/}
 
         </div>
         <button onClick={uploadRecord}> Upload Record </button>

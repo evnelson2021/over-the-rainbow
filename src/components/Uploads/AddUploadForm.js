@@ -1,7 +1,6 @@
 import Axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import {Image} from 'cloudinary-react'
 
 export const AddUploadForm = () => {
 
@@ -56,7 +55,6 @@ export const AddUploadForm = () => {
 
     useEffect(() => {
         if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
             setTimeout(() => setFeedback(""), 3000);
         }
     }, [feedback])
@@ -114,14 +112,6 @@ export const AddUploadForm = () => {
                     setImageSelected(event.target.files[0])
                 }} 
             /> 
-            
-
-            {/* <Image 
-            style={{width: 200}}
-            cloudName="evnelson2021" 
-            // publicId= 
-            // publicId="https://res.cloudinary.com/evnelson2021/image/upload/v1672263684/sva07jvy1h416iix8djf.jpg"
-            />*/}
 
         </div>
         <button onClick={uploadImage}> Upload Image </button>

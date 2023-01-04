@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom"
 
 
 export const ActivityEditForm = () => {
-    // TODO: Provide initial state for profile
 
     const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -22,11 +21,6 @@ const navigate = useNavigate()
 const {activityId} = useParams()
 
 
-// const localRainbowUser = localStorage.getItem("rainbow_user")
-//     const rainbowUserObject = JSON.parse(localRainbowUser)
-
-    // TODO: Get activity info from API and update state
-
     useEffect(() => {
         fetch(`http://localhost:8088/activities?id=${activityId}`)
         .then(response => response.json())
@@ -37,11 +31,6 @@ const {activityId} = useParams()
 
     const handleSaveButtonClick = (clickEvent) => {
         clickEvent.preventDefault()
-
-        /*
-            TODO: Perform the PUT fetch() call here to update the activity.
-            Navigate user to home page when done.
-        */
 
             fetch(`http://localhost:8088/activities/${activity.id}`, {
                 method: "PUT",
@@ -61,7 +50,6 @@ const {activityId} = useParams()
         
         useEffect(() => {
             if (feedback !== "") {
-                // Clear feedback to make entire element disappear after 3 seconds
                 setTimeout(() => setFeedback(""), 3000);
                 }
         }, [feedback])
@@ -126,8 +114,6 @@ const {activityId} = useParams()
                             }
                         } />
                 </div>
-                {/* create a separate component that will deal with the date the way I want it to, then import that into the components I need so it will deal with the date  */}
-                {/* write helper function to reformat the date to display properly */}
             </fieldset>
             <fieldset>
                 <div className="form-group">
@@ -189,17 +175,6 @@ const {activityId} = useParams()
                                 setActivity(copy)
                             }
                         } />
-                    {/* <label htmlFor="name">Both:</label>
-                    <input type="radio"
-                        name="kid"
-                        value= "3"
-                        onClick={
-                            (click) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(click.target.value)
-                                setActivity(copy)
-                            }
-                        } /> */}
                 </div>
             </fieldset>
             <button
@@ -211,44 +186,3 @@ const {activityId} = useParams()
         </>
     )
 }
-
-
-// JUST PUTTING THIS HERE FOR LATER - MAKING A DROPDOWN - will need "Both" option with an id of 3 to add to both activity lists
-{/* <label htmlFor="kidId">Kid(s)</label><br></br>
-                    <select>
-                        <option 
-                        required autoFocus
-                        type="checkbox" 
-                        id="kidId" 
-                        className="act-control"
-                        defaultValue={activity.kidId}
-                        onChange={
-                            (evt)=> {
-                                const copy = {...activity}
-                                copy.kidId = evt.target.checked
-                                setActivity(copy)
-                            }
-                        }/>
-                    </select> */}
-
-            {/* <label htmlFor="kids">Kids</label><br></br> 
-            <select onChange={setKids}>
-                <option defaultValue={0} type="select" id="kidId" className="act-control" required></option>
-                {
-                kids.map ((kid) => {
-                return <option key-"kidId--{kid.id}" defaultValue={kid.id}>{kid.name}</option>
-                </select> */}
-
-
-
-// LABEL FOR ID3 CHECKBOX
-                {/* <label htmlFor="name">Both:</label>
-                        <input type="checkbox"
-                        defaultValue= "3"
-                        onChange={
-                            (evt) => {
-                                const copy = {...activity}
-                                copy.kidId = parseInt(evt.target.defaultValue)
-                                setActivity(copy)
-                            }
-                        } /> */}

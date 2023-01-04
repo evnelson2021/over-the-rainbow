@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export const UpdateProfileForm = () => {
-    // TODO: Provide initial state for profile
 
     const localRainbowUser = localStorage.getItem("rainbow_user")
     const rainbowUserObject = JSON.parse(localRainbowUser)
@@ -18,8 +17,6 @@ const [feedback, setFeedback] = useState("")
 const navigate = useNavigate()
 
 
-
-    // TODO: Get user profile info from API and update state
 useEffect(() => {
     fetch(`http://localhost:8088/users?id=${rainbowUserObject.id}`)
     .then(response => response.json())
@@ -32,11 +29,6 @@ useEffect(() => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        /*
-            TODO: Perform the PUT fetch() call here to update the profile.
-            Navigate user to home page when done.
-        */
-
             fetch(`http://localhost:8088/users/${profile.id}`, {
                 method: "PUT",
                 headers: {
@@ -48,17 +40,12 @@ useEffect(() => {
             .then(() => {
                 setFeedback("Profile changes successfully saved")
             })
-            // .then(() => {
-            //     navigate("/dash")
-            // })
         }
 
         
         useEffect(() => {
             if (feedback !== "") {
-                // Clear feedback to make entire element disappear after 3 seconds
                 setTimeout(() => setFeedback(""), 3000)
-                // .then((setTimeout(()=> navigate(""), 3000))) 
             }
         }, [feedback])
         
@@ -81,7 +68,6 @@ useEffect(() => {
                         value={profile.fullName}
                         onChange={
                             (evt) => {
-                                // TODO: Update name property
                                 const copy = {...profile}
                                 copy.fullName = evt.target.value
                                 setProfile(copy)

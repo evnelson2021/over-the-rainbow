@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import { Authorized } from "./views/Authorized"
 import { ApplicationViews } from "./views/ApplicationViews"
 import { NavBar } from "./nav/NavBar"
-// import { Register } from "./auth/Register"
 import "./Rainbow.css"
 import { Home } from "./home/Home"
 import { HomeNav } from "./nav/HomeNav"
@@ -29,6 +28,7 @@ import { ShowRecordsLogoutNav } from "./nav/ShowRecordsLogoutNav"
 import { RecordEditForm } from "./Records/RecordEditForm"
 import { AddRecordForm } from "./Records/AddRecordForm"
 import { RecordsList } from "./Records/RecordsList"
+// import Calendar from "./Calendar/Calendar"
 
 
 export const OverRainbow = () => {
@@ -37,28 +37,6 @@ export const OverRainbow = () => {
 				<HomeNav />
 				<Home />
 			</>} />
-		{/* <Route path="/login" element={<Login />} /> */}
-		{/* <Route path="/register" element={<Register />} /> */}
-
-		{/* <Route path="*" element={
-			<Authorized>
-				<>
-					<NavBar />
-					<ApplicationViews />
-				</>
-			</Authorized>
-
-		} /> */}
-
-		{/* <Route path="*" element={
-			<Authorized>
-			<>
-				<HomeNav />
-				<Home />
-			</>
-		</Authorized>
-			
-		} /> */}
 
 		<Route path="/login" element={
 			<>
@@ -209,7 +187,15 @@ export const OverRainbow = () => {
 			
 		} />
 
+		{/* <Route path="/calendar" element={
+			<Authorized>
+			<>
+				<ShowDashLogoutNav />
+				<Calendar />
+			</>
+		</Authorized>
+			
+		} /> */}
+
 	</Routes>
 }
-
-// ShowDashLogoutNav
